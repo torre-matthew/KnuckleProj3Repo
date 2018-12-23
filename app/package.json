@@ -7,7 +7,11 @@
     "gh-pages": "^2.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+<<<<<<< HEAD
     "react-google-login": "^4.0.1",
+=======
+    "react-materialize": "^2.6.0",
+>>>>>>> 2b199219878fab81495f8d1a7110be9e221fb85e
     "react-scripts": "2.1.1"
   },
   "scripts": {
