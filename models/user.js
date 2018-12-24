@@ -6,7 +6,6 @@ let Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 let UserSchema = new Schema({
-  // `name` must be unique and of type String
   name: {
     type: String
   },
@@ -19,15 +18,16 @@ let UserSchema = new Schema({
   profilePic: {
     type: String
   },
-  // `notes` is an array that stores ObjectIds
-  // The ref property links these ObjectIds to the Note model
-  // This allows us to populate the User with any associated Notes
+  // `savedRecipes` is an array that stores ObjectIds
+  // The ref property links these ObjectIds to the SavedRecipes model
+  // This allows us to populate the User with any associated Saved Recipes
+  
   savedRecipes: [
     {
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,
       // The ObjectIds will refer to the ids in the Note model
-      ref: "SavedRecipe"
+      ref: "SavedRecipes"
     }
   ]
 });
