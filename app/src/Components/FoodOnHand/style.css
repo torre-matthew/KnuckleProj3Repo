@@ -1,0 +1,28 @@
+button.pp-red {
+  background-color: #ff4301;
+  box-shadow: 7px 7px 0 #ffd9cc;
+}
+
+button.pp-foh-search {
+  margin-left: 50px;
+}
+
+button.pp-foh-add {
+  margin-left: 25px;
+}
+
+button.pp-red:hover, button.pp-red:active,button.pp-red:focus  {
+  background-color: #000000;
+  box-shadow: 7px 7px 0 #ffd9cc;
+}
+
+.pp-foh-items li {
+  padding: 10px 0;
+}
+
+input.pp-foh-text {
+  line-height: 2.1;
+  width: 300px;
+  box-shadow: 7px 7px 0 #ffd9cc;
+  border: 1px solid #c7c7c7;
+}
