@@ -3,9 +3,10 @@ import logo from "./logo.svg";
 import Header from "./Components/Header";
 import './App.css';
 import "./Components/Welcome";
+import "./Components/Slider";
 import "./Components/FoodOnHand";
 import FoodOnHand from "./Components/FoodOnHand";
-
+import Slider from "./Components/Slider";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         <Header className="navbar-area">
           <img src={logo} className="App-logo" alt="logo" />   
         </Header>
+        <Slider />
         <div className="container">
          <FoodOnHand />
         </div>

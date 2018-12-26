@@ -1,3 +1,12 @@
+.pp-foh h1 {
+  font-size: 2.2rem;
+  color: #ff4301;
+}
+
+.pp-foh h2 {
+  font-size: 1.56rem;
+  color: #ff4301;
+}
 button.pp-red {
   background-color: #ff4301;
   box-shadow: 7px 7px 0 #ffd9cc;
