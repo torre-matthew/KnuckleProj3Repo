@@ -4,3 +4,50 @@
   z-index: 100;
   transition: 2s;
 }
+
+nav {
+  background-color: #141414;
+  height: 100px;
+}
+
+nav.brand-logo {
+  z-index: 7;
+}
+
+.brand-logo img {
+  width: 40%;
+}
+
+.pp-sign-in h4 {
+  color: #ff4301;
+}
+
+.pp-sign-in .modal-close {
+  background-color: #ff4301;
+  color: #ffffff;
+  box-shadow: 7px 7px 0 #ffd9cc;
+}
+
+.google-modal div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+}
+
+.google-modal .btn {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  background-color:#ff4301;
+}
+
+.google-modal .btn i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}

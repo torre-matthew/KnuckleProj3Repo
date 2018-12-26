@@ -1,41 +1,49 @@
 import React from "react";
 import "./style.css";
+import Button from "react-materialize/lib/Button";
+import Icon from "react-materialize/lib/Icon";
+import Modal from "react-materialize/lib/Modal";
+import Welcome from "../Welcome";
+import logo from "./pp_logo.png";
+
 
 function Header() {
   return (
+   <div>
     <nav className="navbar navbar-expand-sm">
-      <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">☰</button>
-            <a className="navbar-brand" href="#home">
-              <img src="img/logo.png" alt="" />
-            </a>
-          </div>
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav menu navbar-nav ml-auto">
-              <li className="nav-item current-menu-item"><a href="#home" className="nav-link">Home</a>
-              </li>
-              <li className="nav-item"><a href="#about" className="nav-link">About</a>
-              </li>
-              <li className="nav-item"><a href="#product" className="nav-link">products</a>
-              </li>
-              <li className="nav-item"><a href="#prices" className="nav-link">prices</a>
-              </li>
-              <li className="nav-item"><a href="#gallery" className="nav-link">gallery</a>
-              </li>
-              <li className="nav-item"><a href="#faq" className="nav-link">FAQ´s</a>
-              </li>
-              <li className="nav-item"><a href="#testimonials" className="nav-link">Testimonials</a>
-              </li>
-              <li className="nav-item"><a href="#app" className="nav-link">App</a>
-              </li>
-              <li className="nav-item"><a href="#contact" className="nav-link"><span className="fa fa-pencil-square-o"></span></a>
-              </li>
-            </ul>
-          </div>
-          </div>
+      <div className="nav-wrapper container">
+          <a href="#!" className="brand-logo"><img src={logo} className="App-logo" alt="logo" /> </a>
+        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+        <ul className="right hide-on-med-and-down">
+            <li className="google-modal"><Modal
+              className="pp-sign-in"
+              header='Login with your Google ID'
+              bottomSheet
+              trigger={<Button><Icon>face</Icon></Button>}>
+              <Welcome /><p>lorem ipsum</p>
+            </Modal></li>
+        </ul>
+      </div>
+      {/* <div className="container">
+        <Navbar brand="logo" right>
+          <NavItem href='get-started.html'><Icon>search</Icon></NavItem>
+          <NavItem href='get-started.html'><Icon>view_module</Icon></NavItem>
+          <NavItem href='get-started.html'><Icon>refresh</Icon></NavItem>
+          <Modal
+            header='Modal Header'
+            bottomSheet
+            trigger={<Button><Icon>face</Icon></Button>}>
+            <Welcome/><p>lorem ipsum</p>
+          </Modal>
+        </Navbar>
+      </div> */}
         
     </nav>
+    <ul className="sidenav" id="mobile-demo">
+
+      <li><a href="mobile.html">Login</a></li>
+    </ul>
+    </div>
   );
 }
 
