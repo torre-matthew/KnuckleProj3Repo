@@ -1,0 +1,77 @@
+.pp-fd::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url(food-display-bg.png) no-repeat center center;
+  content: "";
+  background-attachment: fixed;
+}
+
+.pp-fd {
+    background: #f7f7f7;
+    position: relative;
+    padding-top: 145px;
+    padding-bottom: 95px;
+}
+
+.pp-fd h2 {
+    font-size: 1.56rem;
+    color: #ff4301;
+}
+
+.pp-fd-results::before {
+  background: #333333 none repeat scroll 0 0;
+  content: "";
+  height: 170%;
+  position: absolute;
+  right: -25%;
+  top: -69%;
+  transform: rotate(-34deg);
+  width: 70%;
+}
+
+.pp-fd-results {
+  background: #fff none repeat scroll 0 0;
+  height: 240px;
+  line-height: 233px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid transparent;
+  transition: .4s;
+}
+
+.pp-fd-results:hover {
+  border: 2px solid #ff4301;
+}
+
+.pp-fd-results:hover .pp-fd-link {
+  left: 10%;
+}
+
+.pp-fd-results img, .pp-fd-results div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pp-fd-icon {
+  left: 110px;
+  position: relative;
+}
+
+
+
+.pp-fd-link a {
+    background: #ff4301 none repeat scroll 0 0;
+    -webkit-box-shadow: 8px 8px 0px rgba(255, 67, 1, 0.2);
+    -moz-box-shadow: 8px 8px 0px rgba(255, 67, 1, 0.2);
+    box-shadow: 8px 8px 0px rgba(255, 67, 1, 0.2);
+    color: #fff;
+    display: inline-block;
+    line-height: normal;
+    padding: 8px 40px;
+    font-family: 'Just Another Hand', cursive;
+    font-size: 40px;
+}

@@ -10,7 +10,7 @@ nav {
   height: 100px;
 }
 
-nav.brand-logo {
+nav .brand-logo {
   z-index: 7;
 }
 
