@@ -16,6 +16,11 @@
     padding-bottom: 95px;
 }
 
+.pp-fd h1 {
+  font-size: 3.2rem;
+  color: #ff4301;
+}
+
 .pp-fd h2 {
     font-size: 1.56rem;
     color: #ff4301;
@@ -61,6 +66,12 @@
   position: relative;
 }
 
+.pp-fd-link {
+  left: -100%;
+  position: absolute;
+  top: 0;
+  transition: .4s;
+}
 
 
 .pp-fd-link a {
@@ -72,6 +83,6 @@
     display: inline-block;
     line-height: normal;
     padding: 8px 40px;
-    font-family: 'Just Another Hand', cursive;
+    font-family: "Montserrat", sans-serif;
     font-size: 40px;
 }
