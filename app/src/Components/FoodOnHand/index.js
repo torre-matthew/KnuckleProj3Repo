@@ -3,9 +3,10 @@ import "./style.css";
 //import Input from "react-materialize/lib/Input";
 import Row from "react-materialize/lib/Row";
 import Button from "react-materialize/lib/Button";
+
 function FoodOnHand() {
   return (
-    <div className="pp-foh">
+    <div className="container pp-foh">
       <Row>
         <h1>Hello David, Welcome to your Pocket Pantry!</h1>
         <h2>What ingredients do you have on-hand today?</h2>
