@@ -23,7 +23,7 @@ class Welcome extends Component{
             <a href="signup" className="button success"> Signup</a>
             </div>
             </div>
-        );
+        )
         
     }
 }
