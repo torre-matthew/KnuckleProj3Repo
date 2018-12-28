@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
 import GoogleLogin from 'react-google-login';
+<<<<<<< HEAD
+=======
+// 
+>>>>>>> 319d18ff3893ea19b6d491e0970011f45307cbda
 
 
    
@@ -13,7 +17,6 @@ class Welcome extends Component{
         return(
             <div className= "row" id= "Body">
             <div className= "medium-12 columns">
-            <h2 id="welcomeText">Log in with Google</h2>
             <GoogleLogin
                 clientId="219205541710-tbgv10kbpl60g72od59iu9t68aaiu8e3.apps.googleusercontent.com"
                 buttonText="Login"

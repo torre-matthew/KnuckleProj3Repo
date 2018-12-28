@@ -31,10 +31,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-// mongoose.connect("", { "": true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pocketPantryDB", { useNewUrlParser: true });
 
 // Routes
-
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./app/public/index.html"));
