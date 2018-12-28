@@ -11,23 +11,20 @@ import Slider from "./Components/Slider";
 import FoodDisplay from "./Components/FoodDisplay";
 
 
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header className="navbar-area">
-          <img src={logo} className="App-logo" alt="logo" />   
+          <img src={logo} className="App-logo" alt="logo" />  
+          <Welcome className="welcome-area"></Welcome> 
         </Header>
-<<<<<<< HEAD
-        <Welcome className="login-area">
-        </Welcome>
-=======
         <Slider />
        
          <FoodOnHand />
          <FoodDisplay />
         
->>>>>>> 319d18ff3893ea19b6d491e0970011f45307cbda
       </div>
     );
   }

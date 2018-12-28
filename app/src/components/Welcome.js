@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 
 import GoogleLogin from 'react-google-login';
-<<<<<<< HEAD
-=======
-// 
->>>>>>> 319d18ff3893ea19b6d491e0970011f45307cbda
 
 
    
