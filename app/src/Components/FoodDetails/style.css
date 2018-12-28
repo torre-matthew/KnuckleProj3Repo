@@ -1,0 +1,51 @@
+.pp-food-details {
+
+}
+
+.pp-food-details h1 {
+    font-size: 2.2rem;
+    color: #ff4301;
+}
+
+.pp-food-details th:first-of-type,.pp-food-details td:first-child {
+  padding-left: 20px;
+}
+
+.pp-recipe-card::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.pp-food-details th {
+    background-color: #333333;
+    color: #fff;
+    font-family: "montserrat", sans-serif;
+    font-weight: 400;
+    border-radius: 0;
+    font-size: 1.27rem;
+}
+
+.pp-food-details .pp-recipe-header {
+  font-family: "montserrat", sans-serif;
+  color: #ff4301;
+  font-weight: 400;
+  font-size: 1.27rem;
+  display: block;
+}
+
+.pp-food-details .pp-recipe {
+  display: inline-block; 
+}
+
+.pp-food-details .pp-recipe-rm {
+  float: right;
+  background-color: #000000;
+  -webkit-box-shadow: 8px 8px 0px rgba(177, 177, 177, 0.2);
+  -moz-box-shadow: 8px 8px 0px rgba(177, 177, 177, 0.2);
+  box-shadow: 8px 8px 0px rgba(177, 177, 177, 0.2);
+}
+
+.pp-food-details .pp-recipe-rm:hover {
+  background-color: #ff4301;
+}
