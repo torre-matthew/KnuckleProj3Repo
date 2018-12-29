@@ -62,12 +62,12 @@
 }
 
 .pp-fd-icon {
-  left: 110px;
+  left: 130px;
   position: relative;
 }
 
 .pp-fd-link {
-  left: -100%;
+  left: -150%;
   position: absolute;
   top: 0;
   transition: .4s;
@@ -84,5 +84,29 @@
     line-height: normal;
     padding: 8px 40px;
     font-family: "Montserrat", sans-serif;
-    font-size: 40px;
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 1570px) and (min-width: 1470px) {
+  .pp-fd-icon {
+      left: 100px;
+  }
+}
+
+@media only screen and (max-width: 1469px) and (min-width: 1370px) {
+  .pp-fd-icon {
+      left: 70px;
+  }
+}
+
+@media only screen and (max-width: 1369px) and (min-width: 1170px) {
+  .pp-fd-icon {
+      left: 10px;
+  }
+}
+
+@media only screen and (max-width: 1169px) and (min-width: 992px) {
+  .pp-fd-icon {
+display: none;
+  }
 }
