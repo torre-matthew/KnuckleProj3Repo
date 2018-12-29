@@ -9,7 +9,7 @@ import FoodOnHand from "./Components/FoodOnHand";
 import Slider from "./Components/Slider";
 import FoodDisplay from "./Components/FoodDisplay";
 import FoodDetails from "./Components/FoodDetails";
-
+import SavedMeals from "./Components/SavedMeals";
 class App extends Component {
   render() {
     return (
@@ -18,10 +18,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />   
         </Header>
         <Slider />
-       
          <FoodOnHand />
          <FoodDisplay />
           <FoodDetails />
+          <SavedMeals />
       </div>
     );
   }

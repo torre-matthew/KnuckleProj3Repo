@@ -18,57 +18,57 @@ function FoodDisplay() {
           </div>
         </div>
         <div className="row">
-          <div className="col s6">
+          <div className="col s12 m6">
             <div className="pp-fd-results">
               <div>
-                <img src={resultImage1} />
+                <img src={resultImage1} alt="food"/>
               </div>
               <div className="pp-fd-icon">
-                <img src={result_icon1} />
+                <img src={result_icon1} alt="food icon" />
               </div>
               <div className="pp-fd-link">
-                <a href="#">See Recipe</a>
+                <a href="/">See Recipe</a>
               </div>
             </div>
           </div>
-          <div className="col s6">
+          <div className="col s12 m6">
             <div className="pp-fd-results">
               <div>
-                <img src={resultImage2} />
+                <img src={resultImage2} alt="food" />
               </div>
               <div className="pp-fd-icon">
-                <img src={result_icon2} />
+                <img src={result_icon2} alt="food icon" />
               </div>
               <div className="pp-fd-link">
-                <a href="#">See Product</a>
+                <a href="/">See Recipe</a>
               </div>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col s6">
+          <div className="col s12 m6">
             <div className="pp-fd-results">
               <div>
-                <img src={resultImage3} />
+                <img src={resultImage3} alt="food" />
               </div>
               <div className="pp-fd-icon">
-                <img src={result_icon3} />
+                <img src={result_icon3} alt="food icon" />
               </div>
               <div className="pp-fd-link">
-                <a href="#">See Recipe</a>
+                <a href="/">See Recipe</a>
               </div>
             </div>
           </div>
-          <div className="col s6">
+          <div className="col s12 m6">
             <div className="pp-fd-results">
               <div>
-                <img src={resultImage4} />
+                <img src={resultImage4} alt="food" />
               </div>
               <div className="pp-fd-icon">
-                <img src={result_icon4} />
+                <img src={result_icon4} alt="food icon" />
               </div>
               <div className="pp-fd-link">
-                <a href="#">See Product</a>
+                <a href="/">See Recipe</a>
               </div>
             </div>
           </div>
