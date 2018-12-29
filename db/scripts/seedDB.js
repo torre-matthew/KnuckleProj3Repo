@@ -80,8 +80,10 @@ let associateSavedRecipesToUser = () => {
     db.SavedRecipes.find({"name": "Meatloaf"})
     .then(data => {
     //Update Quy's record to include a new saved recipe
-        db.Users.findOneAndUpdate({"name": "Quy Nguyen"}, {$push: {savedRecipes: data._id,}})
+        console.log(data[0]._id);
+        db.Users.findOneAndUpdate({"googleId": "105336623638150383761"}, {$push: {savedRecipes: data[0]._id,}})
         .then(updatedUserRecord => {
+            // console.log(updatedUserRecord);
             process.exit(0);
         })
         .catch(err => {

@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
+const routes = require("./routes");
 
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
@@ -34,6 +35,7 @@ if (process.env.NODE_ENV === "production") {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pocketPantryDB", { useNewUrlParser: true });
 
 // Routes
+app.use(routes);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./app/public/index.html"));

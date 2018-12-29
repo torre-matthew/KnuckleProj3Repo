@@ -10,5 +10,8 @@ export default {
   },
   seachByID: function(id){
     return axios.get(BASEURI + URI + id + appID + APIKEY);
+  },
+  saveRecipe: function(recipe){
+    return axios.post("/api/savedRecipes", recipe)
   }
 };
