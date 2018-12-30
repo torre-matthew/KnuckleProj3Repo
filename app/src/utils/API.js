@@ -12,6 +12,12 @@ export default {
     return axios.get(BASEURI + URI + id + appID + APIKEY);
   },
   saveRecipe: function(recipe){
-    return axios.post("/api/savedRecipes", recipe)
+    return axios.post("/api/savedRecipe", recipe)
+  },
+  deleteRecipe: function(recipeID){
+    return axios.delete("/api/savedRecipe/delete-recipe",recipeID);
+  },
+  deleteUserRecipe: function(googleAndRecipeID){
+    return axios.delete("/api/savedRecipe/delete-user-recipe", googleAndRecipeID);
   }
 };
