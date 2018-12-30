@@ -14,6 +14,7 @@ class ListOfingredients extends Component {
     this.setState({
       ingredients
     })
+    console.log(ingredients);
   }
 
   handleDelete = i => e => {
@@ -25,6 +26,7 @@ class ListOfingredients extends Component {
     this.setState({
       ingredients
     })
+
   }
 
   addIngredient = e => {
@@ -34,11 +36,11 @@ class ListOfingredients extends Component {
       ingredients
     })
   }
-
+  
   render() {
     return (
       <div className="pp-foh-list row">
-        <div className="col s6">
+        <div className="col s12 m6">
         <ul className="pp-foh-items">
         {this.state.ingredients.map((ingredient, index) => (
           <li key={index}>
@@ -48,15 +50,16 @@ class ListOfingredients extends Component {
               onChange={this.handleText(index)}
               value={ingredient}
             />
-            <button className="pp-foh-remove pp-red" onClick={this.handleDelete(index)}><i className="tiny material-icons">close</i></button>
+            <button id="del" className="pp-foh-remove pp-red" onClick={this.handleDelete(index)}><i className="tiny material-icons">close</i></button>
           </li>
         ))}
         </ul>
         </div>
-        <div className="pp-foh-controls col s6">
+        <div className="pp-foh-controls col s12 m6">
           <Button waves='light' className="pp-red pp-foh-search">Search</Button>
           <button className="btn-floating pp-red pp-foh-add" onClick={this.addIngredient}><i className="material-icons">add</i></button>
         </div>
+        <script></script>
       </div>
     )
   }
