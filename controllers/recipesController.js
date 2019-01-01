@@ -8,8 +8,37 @@ let saveRecipe = (req, res) => {
     .catch(err => console.log(err));
 }
 
+//This function takes in a request body with recipeID, and then
+//removes it from the DB
+let deleteRecipeByID = (req, res) => {
+    db.SavedRecipes.remove( { recipeID: req.body.recipeID } )
+    .then(data => res.json(data))
+    .catch(err => console.log(err));
+}
+
+//This function takes in the recipeID and googleID of the user, and searches 
+//the recipes DB for the recipe to be deleted, it then takes it's database ID
+//(not recipeID) and deletes the corresponding array element in the savedRecipes
+//array of the user, which is found by googleID. (THANKS TORRE)
+let deleteRecipeFromUserArray = (req, res) => {
+    db.SavedRecipes.find({"recipeID": req.body.recipeID})
+    .then(data => {
+        db.Users.findOneAndUpdate({"googleId": req.body.googleID}, {$pull: {savedRecipes: data[0]._id}})
+        .then(updatedUserRecord => {
+            res.json(updatedUserRecord);
+        })
+        .catch(err => {
+            console.error(err);   
+        }); 
+    })
+    .catch(err => {
+        console.error(err);
+    });  
+}
 
 // Defining methods for the recipesController
 module.exports = {
-    saveRecipe:saveRecipe
+    saveRecipe:saveRecipe,
+    deleteRecipeByID:deleteRecipeByID,
+    deleteUserRecipe: deleteRecipeFromUserArray
 };
