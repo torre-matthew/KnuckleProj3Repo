@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
 import resultImage1 from "./result1.jpg";
 import resultImage2 from "./result2.jpg";
@@ -8,6 +8,18 @@ import result_icon1 from "./result_icon1.png";
 import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
+
+class SaveFavorite extends Component {
+  saveFavorite() {
+    let element = document.getElementById("pp-smHeart");
+    element.classList.toggle("fa");
+  }
+
+  render() {
+    return <span className="pp-sm-favme" onClick={this.saveFavorite}><i id="pp-smHeart" className="far fa-heart"></i></span>
+  }
+}
+
 function FoodDisplay() {
   return (
     <div className="pp-fd">
@@ -20,6 +32,9 @@ function FoodDisplay() {
         <div className="row">
           <div className="col s12 m6">
             <div className="pp-fd-results">
+              <div className="pp-sm-fav-btn">
+                <SaveFavorite />
+              </div>
               <div>
                 <img src={resultImage1} alt="food"/>
               </div>
@@ -33,6 +48,9 @@ function FoodDisplay() {
           </div>
           <div className="col s12 m6">
             <div className="pp-fd-results">
+              <div className="pp-sm-fav-btn">
+                <SaveFavorite />
+              </div>
               <div>
                 <img src={resultImage2} alt="food" />
               </div>
@@ -48,6 +66,9 @@ function FoodDisplay() {
         <div className="row">
           <div className="col s12 m6">
             <div className="pp-fd-results">
+              <div className="pp-sm-fav-btn">
+                <SaveFavorite />
+              </div>
               <div>
                 <img src={resultImage3} alt="food" />
               </div>
@@ -61,6 +82,9 @@ function FoodDisplay() {
           </div>
           <div className="col s12 m6">
             <div className="pp-fd-results">
+              <div className="pp-sm-fav-btn">
+                <SaveFavorite />
+              </div>
               <div>
                 <img src={resultImage4} alt="food" />
               </div>

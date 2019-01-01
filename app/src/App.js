@@ -18,10 +18,10 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />   
         </Header>
         <Slider />
-         <FoodOnHand />
-         <FoodDisplay />
-          <FoodDetails />
-          <SavedMeals />
+        <FoodOnHand />
+        <FoodDisplay />
+        <FoodDetails />
+        <SavedMeals />
       </div>
     );
   }
