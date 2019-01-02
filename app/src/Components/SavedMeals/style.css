@@ -15,6 +15,27 @@
 .pp-sm-recipe-fav {
   position: relative;
   background-color: #141414;
+  overflow: hidden;
+}
+
+.pp-sm-recipe-fav:hover .pp-sm-recipe-fav-link {
+  bottom: 0;
+  background-color: #ff4301;
+  transition: 200ms ease-in all;
+}
+
+.pp-sm-recipe-fav-link {
+  position: absolute;
+  bottom: -30px;
+  transition: 200ms ease-in all;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.pp-sm-recipe-fav-link a {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .pp-sm-recipe-fav img {

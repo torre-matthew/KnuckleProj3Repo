@@ -4,7 +4,7 @@ import Button from "react-materialize/lib/Button";
 import Icon from "react-materialize/lib/Icon";
 import Modal from "react-materialize/lib/Modal";
 import Welcome from "../Welcome";
-import logo from "./pp_logo.png";
+import logo from "./pp_logo2.png";
 import Sidenav from "../Sidenav";
 function Header() {
   return (

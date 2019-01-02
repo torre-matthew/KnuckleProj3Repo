@@ -10,6 +10,8 @@ import Slider from "./Components/Slider";
 import FoodDisplay from "./Components/FoodDisplay";
 import FoodDetails from "./Components/FoodDetails";
 import SavedMeals from "./Components/SavedMeals";
+import Footer from "./Components/Footer";
+
 class App extends Component {
   render() {
     return (
@@ -22,6 +24,7 @@ class App extends Component {
         <FoodDisplay />
         <FoodDetails />
         <SavedMeals />
+        <Footer />
       </div>
     );
   }

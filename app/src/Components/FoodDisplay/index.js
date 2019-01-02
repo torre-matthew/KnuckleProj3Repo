@@ -9,16 +9,38 @@ import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
 
-class SaveFavorite extends Component {
-  saveFavorite() {
-    let element = document.getElementById("pp-smHeart");
-    element.classList.toggle("fa");
-  }
+ class SaveFavorite extends Component {
+   constructor(props) {
+     super(props)
+     this.state = {
+       status: false
+     }
+     this.handleClick = this.handleClick.bind(this)
+   }
+   handleClick() {
+     this.setState({
+       status: !this.state.status
+     })
+   }
+   render() {
+     return (
+       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick}></SaveFavoriteChild>
+     )
+   }
+ }
 
-  render() {
-    return <span className="pp-sm-favme" onClick={this.saveFavorite}><i id="pp-smHeart" className="far fa-heart"></i></span>
-  }
-}
+ class SaveFavoriteChild extends React.Component {
+   render() {
+     return (
+       <span className="pp-sm-favme">
+       <i className={ this.props.className }
+       onClick={ this.props.toggleClassName }
+       >
+       { this.props.children }
+         </i></span>
+     )
+   }
+ }
 
 function FoodDisplay() {
   return (
