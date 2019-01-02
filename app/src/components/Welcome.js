@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-
 import GoogleLogin from 'react-google-login';
-// 
+// import axios from "axios";
+import PPAPI from "../utils/pocketPantryAPI";
 
 
    
@@ -9,6 +9,7 @@ class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
             console.log(response);
+            PPAPI.getUsersSavedRecipes("116022115199629451057");
           }
            
         return(
