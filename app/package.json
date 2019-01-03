@@ -3,6 +3,7 @@
   "homepage": "https://torre-matthew.github.io//KnuckleProj3Repo",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.7.0",
