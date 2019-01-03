@@ -10,13 +10,11 @@ import FoodOnHand from "./Components/FoodOnHand";
 import Slider from "./Components/Slider";
 import FoodDisplay from "./Components/FoodDisplay";
 import FoodDetails from "./Components/FoodDetails";
-<<<<<<< HEAD
+import VideoDisplay from './Components/VideoDisplay';
 
 
 
-=======
 import SavedMeals from "./Components/SavedMeals";
->>>>>>> 6166dd333080bfbd996172ec18b2c97fb12a7a58
 class App extends Component {
   render() {
     return (
@@ -30,6 +28,7 @@ class App extends Component {
          <FoodDisplay />
           <FoodDetails />
           <SavedMeals />
+          <VideoDisplay/>
       </div>
     );
   }
