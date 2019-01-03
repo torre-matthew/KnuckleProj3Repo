@@ -6,6 +6,11 @@ router.route("/saved-recipes")
 // Get all savedRecipes based on the googleID of user. GoogleId should be unique so this should be safe.
 // endpoint looks like: /api/user/saved-recipes
   .get(usersController.usersSavedRecipes);
+
+  router.route("/")
+// Get all users
+// endpoint looks like: /api/user
+  .get(usersController.getAllUsers);
   
 router.route("/savingrecipe")
 // This endpoint is looking for a request body that contains a recipeID from the savedRecipes collection..

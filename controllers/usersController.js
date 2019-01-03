@@ -38,10 +38,17 @@ let createUser = (req, res) => {
     .catch(err => console.log(err));
 }
 
+let getAllUsers = (req, res) => {
+    db.Users.find({})
+    .then(data => res.json(data))
+    .catch(err => console.log(err));
+}
+
 
 // Defining methods for the usersController
 module.exports = {
     usersSavedRecipes: findUsersSavedRecipes,
     saveARecipe: associateSavedRecipesToUser,
-    createUser: createUser 
+    createUser: createUser,
+    getAllUsers: getAllUsers 
 };
