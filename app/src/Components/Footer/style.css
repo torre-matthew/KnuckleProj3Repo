@@ -1,0 +1,18 @@
+.page-footer {
+  background-color: #141414;
+  border-top: 1px solid #ff4301;
+}
+
+.page-copyright {
+  background-color: #000000;
+}
+
+span.ck-copyright {
+  padding-left: 10px;
+}
+
+img.ck-logo {
+  background-color: #474747;
+  border-radius: 100%;
+  margin-right: 10px;
+}

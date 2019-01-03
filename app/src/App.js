@@ -15,6 +15,8 @@ import VideoDisplay from './Components/VideoDisplay';
 
 
 import SavedMeals from "./Components/SavedMeals";
+import Footer from "./Components/Footer";
+
 class App extends Component {
   render() {
     return (
@@ -29,6 +31,7 @@ class App extends Component {
           <FoodDetails />
           <SavedMeals />
           <VideoDisplay/>
+        <Footer />
       </div>
     );
   }

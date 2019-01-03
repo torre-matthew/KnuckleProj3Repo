@@ -1,17 +1,41 @@
-import React from "react";
+import React, { Component } from "react";
 import "./style.css";
-import resultImage1 from "../FoodDisplay/result1.jpg";
-import resultImage2 from "../FoodDisplay/result2.jpg";
-import resultImage3 from "../FoodDisplay/result3.jpg";
-import resultImage4 from "../FoodDisplay/result4.jpg";
-import result_icon1 from "../FoodDisplay/result_icon1.png";
-import result_icon2 from "../FoodDisplay/result_icon2.png";
-import result_icon3 from "../FoodDisplay/result_icon3.png";
-import result_icon4 from "../FoodDisplay/result_icon4.png";
+
+class SaveFavorite extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      status: false
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    this.setState({
+      status: !this.state.status
+    })
+  }
+  render() {
+    return (
+      <SaveFavoriteChild className={this.state.status ? "far fa-heart pp-sm-heart" : "fas fa-heart pp-sm-heart"} toggleClassName={this.handleClick}></SaveFavoriteChild>
+    )
+  }
+}
+
+class SaveFavoriteChild extends React.Component {
+  render() {
+    return (
+      <span className="pp-sm-favme">
+        <i className={this.props.className}
+          onClick={this.props.toggleClassName}
+        >
+          {this.props.children}
+        </i></span>
+    )
+  }
+}
 
 function SavedMeals() {
   return(
-
     <div className="container pp-saved-meals">
       <div className="row">
         <div className="col s12 center">
@@ -19,56 +43,92 @@ function SavedMeals() {
         </div>
       </div>
       <div className="row">
-        <div className="col s12 m6">
-          <div className="pp-fd-results">
-            <div>
-              <img src={resultImage1} alt="food" />
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
             </div>
-            <div className="pp-fd-icon">
-              <img src={result_icon1} alt="food icon" />
-            </div>
-            <div className="pp-fd-link">
+            <img src="https://loremflickr.com/320/320/food?random=1" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
               <a href="/">See Recipe</a>
             </div>
           </div>
         </div>
-        <div className="col s12 m6">
-          <div className="pp-fd-results">
-            <div>
-              <img src={resultImage2} alt="food" />
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
             </div>
-            <div className="pp-fd-icon">
-              <img src={result_icon2} alt="food icon" />
+            <img src="https://loremflickr.com/320/320/food?random=2" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
+              <a href="/">See Recipe</a>
             </div>
-            <div className="pp-fd-link">
+          </div>
+        </div>
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
+            </div>
+            <img src="https://loremflickr.com/320/320/food?random=3" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
+              <a href="/">See Recipe</a>
+            </div>
+          </div>
+        </div>
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
+            </div>
+            <img src="https://loremflickr.com/320/320/food?random=4" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
               <a href="/">See Recipe</a>
             </div>
           </div>
         </div>
       </div>
       <div className="row">
-        <div className="col s12 m6">
-          <div className="pp-fd-results">
-            <div>
-              <img src={resultImage3} alt="food" />
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
             </div>
-            <div className="pp-fd-icon">
-              <img src={result_icon3} alt="food icon" />
-            </div>
-            <div className="pp-fd-link">
+            <img src="https://loremflickr.com/320/320/food?random=5" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
               <a href="/">See Recipe</a>
             </div>
           </div>
         </div>
-        <div className="col s12 m6">
-          <div className="pp-fd-results">
-            <div>
-              <img src={resultImage4} alt="food" />
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
             </div>
-            <div className="pp-fd-icon">
-              <img src={result_icon4} alt="food icon" />
+            <img src="https://loremflickr.com/320/320/food?random=6" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
+              <a href="/">See Recipe</a>
             </div>
-            <div className="pp-fd-link">
+          </div>
+        </div>
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
+            </div>
+            <img src="https://loremflickr.com/320/320/food?random=7" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
+              <a href="/">See Recipe</a>
+            </div>
+          </div>
+        </div>
+        <div className="col s12 m3 pp-sm-recipe">
+          <div className="pp-sm-recipe-fav">
+            <div className="pp-sm-fav-btn">
+              <SaveFavorite />
+            </div>
+            <img src="https://loremflickr.com/320/320/food?random=8" alt="random dish of food" />
+            <div className="pp-sm-recipe-fav-link">
               <a href="/">See Recipe</a>
             </div>
           </div>
@@ -77,5 +137,7 @@ function SavedMeals() {
     </div>
 
   )
+  
 }
+
 export default SavedMeals;
