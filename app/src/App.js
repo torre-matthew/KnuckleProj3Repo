@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import Header from "./Components/Header";
-import Welcome from "./Components/Welcome";
 import './App.css';
 import "./Components/Welcome";
 import "./Components/Slider";
@@ -10,10 +9,6 @@ import FoodOnHand from "./Components/FoodOnHand";
 import Slider from "./Components/Slider";
 import FoodDisplay from "./Components/FoodDisplay";
 import FoodDetails from "./Components/FoodDetails";
-import VideoDisplay from './Components/VideoDisplay';
-
-
-
 import SavedMeals from "./Components/SavedMeals";
 import Footer from "./Components/Footer";
 
@@ -22,15 +17,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header className="navbar-area">
-          <img src={logo} className="App-logo" alt="logo" />  
-          <Welcome className="welcome-area"></Welcome> 
+          <img src={logo} className="App-logo" alt="logo" />   
         </Header>
         <Slider />
-         <FoodOnHand />
-         <FoodDisplay />
-          <FoodDetails />
-          <SavedMeals />
-          <VideoDisplay/>
+        <FoodOnHand />
+        <FoodDisplay />
+        <FoodDetails />
+        <SavedMeals />
         <Footer />
       </div>
     );
