@@ -1,6 +1,7 @@
 import React, { Component }  from "react";
 import Button from "react-materialize/lib/Button";
 import "./style.css";
+import API from "../../utils/API";
 
 
 class ListOfingredients extends Component {
@@ -36,6 +37,15 @@ class ListOfingredients extends Component {
       ingredients
     })
   }
+
+  searchEdamam = event => {
+    event.preventDefault();
+    let queryString = this.state.ingredients;
+    API.search(queryString)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+    console.log(queryString);
+  }
   
   render() {
     return (
@@ -56,7 +66,7 @@ class ListOfingredients extends Component {
         </ul>
         </div>
         <div className="pp-foh-controls col s12 m6">
-          <Button waves='light' className="pp-red pp-foh-search">Search</Button>
+          <Button waves='light' className="pp-red pp-foh-search" onClick={this.searchEdamam}>Search</Button>
           <button className="btn-floating pp-red pp-foh-add" onClick={this.addIngredient}><i className="material-icons">add</i></button>
         </div>
         <script></script>

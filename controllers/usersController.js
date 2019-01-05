@@ -40,7 +40,7 @@ let createUser = (req, res) => {
 
 // gets a user based on googleID and then returns all of the users information.
 let getUser = (req, res) => {
-    db.Users.findOne({"googleId": req.body.googleId})
+    db.Users.findOne({"googleId": req.params.googleId})
     .then(userInfo => res.json(userInfo))
     .catch(err => console.log(err));
 }
