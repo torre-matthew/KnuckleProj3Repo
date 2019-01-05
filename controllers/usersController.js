@@ -38,10 +38,18 @@ let createUser = (req, res) => {
     .catch(err => console.log(err));
 }
 
+// gets a user based on googleID and then returns all of the users information.
+let getUser = (req, res) => {
+    db.Users.findOne({"googleId": req.params.googleId})
+    .then(userInfo => res.json(userInfo))
+    .catch(err => console.log(err));
+}
+
 
 // Defining methods for the usersController
 module.exports = {
     usersSavedRecipes: findUsersSavedRecipes,
     saveARecipe: associateSavedRecipesToUser,
-    createUser: createUser 
+    createUser: createUser,
+    getUser:getUser
 };

@@ -18,5 +18,9 @@ router.route("/create-user")
 // create a new user in the db
 // Matches with: /api/user/create-user
   .post(usersController.createUser);
-       
+
+router.route("/get-user")
+// returns user information based on googleID
+// Matches with: /api/user/get-user
+  .get(usersController.getUser);
 module.exports = router;
