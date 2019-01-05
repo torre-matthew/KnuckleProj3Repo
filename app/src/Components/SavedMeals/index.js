@@ -34,12 +34,17 @@ class SaveFavoriteChild extends React.Component {
   }
 }
 
+var yourName = sessionStorage.getItem("un");
+if (yourName == null) {
+  yourName = "Guest";
+}
+
 function SavedMeals() {
   return(
     <div className="container pp-saved-meals">
       <div className="row">
         <div className="col s12 center">
-          <h1>David Chang's saved meals</h1>
+          <h1>{yourName+"'s"} saved meals</h1>
         </div>
       </div>
       <div className="row">

@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
-
-import GoogleLogin from 'react-google-login';
-// 
+import { GoogleLogout, GoogleLogin } from 'react-google-login';
 
 
+const logout = () => {
+    console.log('logout') // eslint-disable-line
+    sessionStorage.clear();
+    window.location.reload();
+}
    
 class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
             console.log(response);
+            console.log(response.w3.ig);
+            
+            sessionStorage.setItem("un", response.w3.ig);
+            sessionStorage.setItem("em", response.profileObj.email);
+
+            window.location.reload();
           }
-           
+
         return(
             <div className= "row" id= "Body">
             <div className= "medium-12 columns">
@@ -20,6 +29,11 @@ class Welcome extends Component{
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
                 />
+            <GoogleLogout
+                buttonText="Logout"
+                onLogoutSuccess={logout}
+            >
+            </GoogleLogout>
             <a href="signup" className="button success"> Signup</a>
             </div>
             </div>
@@ -27,5 +41,7 @@ class Welcome extends Component{
         
     }
 }
+
+  
 
 export default Welcome;

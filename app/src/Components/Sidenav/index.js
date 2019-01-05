@@ -4,6 +4,15 @@ import SideNavItem from "react-materialize/lib/SideNavItem";
 import Button from "react-materialize/lib/Button";
 import "./style.css";
 
+var yourName = sessionStorage.getItem("un");
+var yourEmail = sessionStorage.getItem("em");
+
+if (yourName == null) {
+  yourName = "Guest";
+}
+if (yourEmail == null) {
+  yourEmail = "";
+}
 class Sidenav extends React.Component {
 render() {
   return (
@@ -15,8 +24,8 @@ render() {
     user={{
       background: 'images/pantry.jpg',
       image: 'images/dc.png',
-      name: 'David Chang',
-      email: 'dchang@gmail.com'
+      name: yourName,
+      email: yourEmail
     }}
   />
   {/* <SideNavItem href='#!icon' icon='cloud'>Saved Meals</SideNavItem> */}
