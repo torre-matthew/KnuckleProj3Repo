@@ -8,8 +8,10 @@ export default {
   search: function(query) {
     return axios.get(BASEURL + query + appID + APIKEY);
   },
-  seachByID: function(id){
-    return axios.get(BASEURI + URI + id + appID + APIKEY);
+  seachByID: function(recipeID){
+    let array = recipeID.split("_");
+    recipeID = array[1];
+    return axios.get(BASEURI + URI + recipeID + appID + APIKEY);
   },
   saveRecipe: function(recipe){
     return axios.post("/api/savedRecipe", recipe)
