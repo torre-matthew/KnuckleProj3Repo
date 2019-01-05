@@ -42,6 +42,7 @@ import result_icon4 from "./result_icon4.png";
    }
  }
 
+
 function FoodDisplay() {
   return (
     <div className="pp-fd">

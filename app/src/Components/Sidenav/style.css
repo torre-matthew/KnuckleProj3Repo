@@ -91,7 +91,7 @@
 
 .side-nav .userView .name {
     margin-top: 17px;
-    padding-bottom: 17px;
+    /* padding-bottom: 17px; */
     font-weight: 500;
     line-height: 24px;
 }
@@ -101,5 +101,5 @@
     margin-top: 0;
     font-weight: 400;
     line-height: 24px;
-    display: none;
+    /* display: none; */
 }
