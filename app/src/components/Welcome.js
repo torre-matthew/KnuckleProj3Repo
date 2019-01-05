@@ -9,7 +9,8 @@ class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
             console.log(response);
-            PPAPI.getUsersSavedRecipes("116022115199629451057");
+            PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email)
+            PPAPI.getUsersSavedRecipes(response.profileObj.googleId); 
           }
            
         return(

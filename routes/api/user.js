@@ -2,9 +2,9 @@ const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 
 // Matches with "/api/user/saved-recipes"
-router.route("/saved-recipes")
+router.route("/:googleId")
 // Get all savedRecipes based on the googleID of user. GoogleId should be unique so this should be safe.
-// endpoint looks like: /api/user/saved-recipes
+// endpoint looks like: /api/user/############
   .get(usersController.usersSavedRecipes);
 
   router.route("/")
