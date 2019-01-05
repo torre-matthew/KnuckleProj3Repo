@@ -41,6 +41,12 @@ let createUser = (req, res) => {
 let getAllUsers = (req, res) => {
     db.Users.find({})
     .then(data => res.json(data))
+}
+
+// gets a user based on googleID and then returns all of the users information.
+let getUser = (req, res) => {
+    db.Users.findOne({"googleId": req.params.googleId})
+    .then(userInfo => res.json(userInfo))
     .catch(err => console.log(err));
 }
 
@@ -50,5 +56,6 @@ module.exports = {
     usersSavedRecipes: findUsersSavedRecipes,
     saveARecipe: associateSavedRecipesToUser,
     createUser: createUser,
-    getAllUsers: getAllUsers 
+    getAllUsers: getAllUsers, 
+    getUser: getUser
 };
