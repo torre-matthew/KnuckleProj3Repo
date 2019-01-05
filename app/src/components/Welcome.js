@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
-// import axios from "axios";
-import PPAPI from "../utils/pocketPantryAPI";
+import PPAPI from "../utils/pocketPantryAPI"; 
 
 
    
@@ -9,10 +8,14 @@ class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
             console.log(response);
-            PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email)
-            PPAPI.getUsersSavedRecipes(response.profileObj.googleId); 
+            
+            sessionStorage.setItem("un", response.w3.ig);
+            sessionStorage.setItem("em", response.profileObj.email);
+
+            PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
+            PPAPI.getUsersSavedRecipes(response.profileObj.googleId);
           }
-           
+
         return(
             <div className= "row" id= "Body">
             <div className= "medium-12 columns">
@@ -30,7 +33,6 @@ class Welcome extends Component{
     }
 }
 
- 
   
 
 export default Welcome;
