@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import GoogleLogin from 'react-google-login';
 import PPAPI from "../utils/pocketPantryAPI"; 
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
 
@@ -9,6 +8,10 @@ const logout = () => {
     sessionStorage.clear();
     window.location.reload();
 }
+
+let checkIfUserAlreadyExistsInDB = () => {
+    
+}
    
 class Welcome extends Component{
     render(){
@@ -17,7 +20,7 @@ class Welcome extends Component{
             console.log(response.w3.ig);
             PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
             PPAPI.getUsersSavedRecipes(response.profileObj.googleId);            
-            sessionStorage.setItem("un", response.w3.ig);
+            sessionStorage.setItem("un", response.profileObj.name);
             sessionStorage.setItem("em", response.profileObj.email);
             window.location.reload();
           }
