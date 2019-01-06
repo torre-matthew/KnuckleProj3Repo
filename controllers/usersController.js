@@ -3,7 +3,7 @@ const db = require("../db/models");
 // This function takes the googleId from the api get request and queries the db to look for the Users collection that
 // matches that google Id. Return the savedRecipes array when found.
 let findUsersSavedRecipes = (req, res) => {
-    db.Users.findOne({"googleId": req.body.googleId}, "savedRecipes")
+    db.Users.findOne({"googleId": req.params.googleId}, "savedRecipes")
     .then(data => res.json(data))
     .catch(err => console.log(err));
 }
@@ -38,10 +38,25 @@ let createUser = (req, res) => {
     .catch(err => console.log(err));
 }
 
+// GET all users that exist in the db.
+let getAllUsers = (req, res) => {
+    db.Users.find({})
+    .then(data => res.json(data))
+}
+
+// gets a user based on googleID and then returns all of the users information.
+let getUser = (req, res) => {
+    db.Users.findOne({"googleId": req.params.googleId})
+    .then(userInfo => res.json(userInfo))
+    .catch(err => console.log(err));
+}
+
 
 // Defining methods for the usersController
 module.exports = {
     usersSavedRecipes: findUsersSavedRecipes,
     saveARecipe: associateSavedRecipesToUser,
-    createUser: createUser 
+    createUser: createUser,
+    getAllUsers: getAllUsers, 
+    getUser: getUser
 };
