@@ -38,6 +38,7 @@ let createUser = (req, res) => {
     .catch(err => console.log(err));
 }
 
+// GET all users that exist in the db.
 let getAllUsers = (req, res) => {
     db.Users.find({})
     .then(data => res.json(data))

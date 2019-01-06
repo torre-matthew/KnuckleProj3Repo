@@ -9,20 +9,29 @@ const logout = () => {
     window.location.reload();
 }
 
-let checkIfUserAlreadyExistsInDB = () => {
-    
+//THis function is checking to see if the user logging in via google already has a record in the database.
+// It will make sure that mulitple records aren't created for the same googleId.
+// if the do, save name and email address to session storage for display in the app while their session is live.
+// if they don't, create a record for them in the Users collection, then save name and email address to session storage for display in the app while their session is live. 
+let checkIfUserAlreadyExistsInDB = (response) => {
+    if (PPAPI.getUserRecord(response.profileObj.googleId)) {
+        sessionStorage.setItem("un", response.profileObj.name);
+        sessionStorage.setItem("em", response.profileObj.email);
+        PPAPI.getUsersSavedRecipes(response.profileObj.googleId);
+    }  
+    else {
+        PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
+        sessionStorage.setItem("un", response.profileObj.name);
+        sessionStorage.setItem("em", response.profileObj.email);
+    }
 }
    
 class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
             console.log(response);
-            console.log(response.w3.ig);
-            PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
-            PPAPI.getUsersSavedRecipes(response.profileObj.googleId);            
-            sessionStorage.setItem("un", response.profileObj.name);
-            sessionStorage.setItem("em", response.profileObj.email);
-            window.location.reload();
+            checkIfUserAlreadyExistsInDB(response);
+            window.location.reload(); // This reload is here so that once logged in, the user doesn't have to manually refresh to see their data appear in the app.
           }
 
         return(
