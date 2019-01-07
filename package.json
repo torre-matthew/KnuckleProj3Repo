@@ -11,7 +11,6 @@
     "app": "cd app && npm run start",
     "seed": "node db/scripts/seedDB.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/torre-matthew/KnuckleProj3Repo.git"
@@ -28,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "concurrent": "^0.3.2",
     "express": "^4.16.4",
     "if-env": "^1.0.4",
     "mongoose": "^5.4.0",

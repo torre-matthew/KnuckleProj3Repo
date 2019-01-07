@@ -18,7 +18,7 @@ function Header() {
               header='Login with your Google ID'
               bottomSheet
               trigger={<Button><Icon>face</Icon></Button>}>
-              <Welcome /><p>lorem ipsum</p>
+              <Welcome />
             </Modal></li>
             <li className="pp-sidenav"><Sidenav /></li>
         </ul>
