@@ -62,8 +62,8 @@
 }
 
 .pp-fd-icon {
-  left: 130px;
-  position: relative;
+  position: absolute;
+  right: 15px;
 }
 
 .pp-fd-link {
@@ -87,7 +87,19 @@
     font-size: 2rem;
 }
 
-@media only screen and (max-width: 1570px) and (min-width: 1470px) {
+@media only screen and (max-width: 850px) {
+  .pp-fd-results div.pp-fd-icon {
+      display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .pp-fd-results div.pp-fd-icon {
+      display: inline-block;
+  }
+}
+
+/* @media only screen and (max-width: 1570px) and (min-width: 1470px) {
   .pp-fd-icon {
       left: 100px;
   }
@@ -109,4 +121,4 @@
   .pp-fd-icon {
 display: none;
   }
-}
+} */
