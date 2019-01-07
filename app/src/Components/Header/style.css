@@ -21,12 +21,18 @@ nav .brand-logo {
 
 .pp-sign-in h4 {
   color: #ff4301;
+  padding-bottom: 1.7rem;
 }
 
 .pp-sign-in .modal-close {
+  margin: 0 10px;
   background-color: #ff4301;
   color: #ffffff;
   box-shadow: 7px 7px 0 #ffd9cc;
+}
+
+.google-modal {
+  padding-bottom: 0
 }
 
 .google-modal div {
