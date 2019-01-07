@@ -25,6 +25,8 @@ let checkIfUserAlreadyExistsInDB = (response) => {
         sessionStorage.setItem("em", response.profileObj.email);
     }
 }
+
+
    
 class Welcome extends Component{
     render(){

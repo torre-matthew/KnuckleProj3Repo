@@ -4,7 +4,12 @@ const recipesController = require("../../controllers/recipesController");
 // Matches with "/api/savedRecipe"
 // Posts a new recipe name, image, and recipeID to the DB
 router.route("/")
-  .post(recipesController.saveRecipe); 
+  .post(recipesController.saveRecipe);
+
+// Get details of a saved recipe based on the obj id of that saved recipe in the db
+// Matches with "/api/savedRecipe/############"
+router.route("/:objID")
+  .get(recipesController.getSavedRecipe);
 
 // Matches with "/api/savedRecipe/delete-recipe"
 // Deletes a recipe from the DB given the recipeID
