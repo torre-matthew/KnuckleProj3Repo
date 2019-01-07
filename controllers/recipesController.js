@@ -8,6 +8,16 @@ let saveRecipe = (req, res) => {
     .catch(err => console.log(err));
 }
 
+let getSavedRecipeByObjID = (req, res) => {
+    db.SavedRecipes.findOne({"_id": req.params.objID})
+    .then(data => {
+        res.json(data) 
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
 //This function takes in a request body with recipeID, and then
 //removes it from the DB
 let deleteRecipeByID = (req, res) => {
@@ -39,6 +49,7 @@ let deleteRecipeFromUserArray = (req, res) => {
 // Defining methods for the recipesController
 module.exports = {
     saveRecipe:saveRecipe,
+    getSavedRecipe: getSavedRecipeByObjID,
     deleteRecipeByID:deleteRecipeByID,
     deleteUserRecipe: deleteRecipeFromUserArray
 };
