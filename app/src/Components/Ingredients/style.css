@@ -43,8 +43,8 @@ button.pp-foh-remove {
   width: 20px;
   position: absolute;
   top: 0;
-  left: 290px;
-      box-shadow: 2px 2px 0 #ffd9cc;
+  left: 300px;
+  box-shadow: 2px 2px 0 #ffd9cc;
 }
 
 button.pp-foh-remove i {
@@ -68,4 +68,6 @@ input[type=text].pp-foh-text, input[type=text]:not(.browser-default):focus:not([
   box-shadow: 7px 7px 0 #ffd9cc;
   border: 1px solid #c7c7c7;
   height: inherit;
+  padding-left: 10px;
+  font-size: 1.27rem;
 }
