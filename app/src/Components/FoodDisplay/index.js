@@ -41,9 +41,33 @@ import result_icon4 from "./result_icon4.png";
      )
    }
  }
+ 
+function FoodDisplayCard({
+  name,
+  image,
+  href
+}){
+  return(
+    <div className="col s12 m6">
+      <div className="pp-fd-results">
+        <div className="pp-sm-fav-btn">
+          <SaveFavorite />
+        </div>
+        <div>
+          <img src={image} alt="food"/>
+        </div>
+        <div className="pp-fd-icon">
+          <img src={result_icon1} alt="food icon" />
+        </div>
+        <div className="pp-fd-link">
+          <a href="/">See Recipe</a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-
-function FoodDisplay() {
+function FoodDisplay({children}) {
   return (
     <div className="pp-fd">
       <div className="container">
@@ -53,76 +77,11 @@ function FoodDisplay() {
           </div>
         </div>
         <div className="row">
-          <div className="col s12 m6">
-            <div className="pp-fd-results">
-              <div className="pp-sm-fav-btn">
-                <SaveFavorite />
-              </div>
-              <div>
-                <img src={resultImage1} alt="food"/>
-              </div>
-              <div className="pp-fd-icon">
-                <img src={result_icon1} alt="food icon" />
-              </div>
-              <div className="pp-fd-link">
-                <a href="/">See Recipe</a>
-              </div>
-            </div>
-          </div>
-          <div className="col s12 m6">
-            <div className="pp-fd-results">
-              <div className="pp-sm-fav-btn">
-                <SaveFavorite />
-              </div>
-              <div>
-                <img src={resultImage2} alt="food" />
-              </div>
-              <div className="pp-fd-icon">
-                <img src={result_icon2} alt="food icon" />
-              </div>
-              <div className="pp-fd-link">
-                <a href="/">See Recipe</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s12 m6">
-            <div className="pp-fd-results">
-              <div className="pp-sm-fav-btn">
-                <SaveFavorite />
-              </div>
-              <div>
-                <img src={resultImage3} alt="food" />
-              </div>
-              <div className="pp-fd-icon">
-                <img src={result_icon3} alt="food icon" />
-              </div>
-              <div className="pp-fd-link">
-                <a href="/">See Recipe</a>
-              </div>
-            </div>
-          </div>
-          <div className="col s12 m6">
-            <div className="pp-fd-results">
-              <div className="pp-sm-fav-btn">
-                <SaveFavorite />
-              </div>
-              <div>
-                <img src={resultImage4} alt="food" />
-              </div>
-              <div className="pp-fd-icon">
-                <img src={result_icon4} alt="food icon" />
-              </div>
-              <div className="pp-fd-link">
-                <a href="/">See Recipe</a>
-              </div>
-            </div>
-          </div>
+          {children}
         </div>
       </div> 
     </div>
   );
 }
 
-export default FoodDisplay;
+export default {FoodDisplay, FoodDisplayCard}; 
