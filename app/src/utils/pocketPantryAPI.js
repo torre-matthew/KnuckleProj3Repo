@@ -6,14 +6,18 @@ import axios from "axios";
 let getUsersSavedRecipes = (googleId) => {
   axios.get('/api/user/saved-recipes/' + googleId)
   .then(function(response) {
-    console.log(response);
   });
 }
 
 let getUserRecord = (googleId) => {
   axios.get('/api/user/' + googleId)
   .then(function(response) {
-    console.log(response);
+  });
+}
+
+let getSavedRecipeDetails = (objID) => {
+  axios.get('/api/savedRecipe/' + objID)
+  .then(function(response) {
   });
 }
 
@@ -25,7 +29,6 @@ let createUser = (name, googleId, imageUrl, email) => {
       email: email
   })
   .then(function(response) {
-    console.log(response);
   });
 }
 
@@ -38,5 +41,9 @@ export default {
     createUser: createUser,
 //Get a single Users Record from the db
 // On the front-end just pass this method googleId like this... PPAPI.getUserRecord(googleId)
-    getUserRecord: getUserRecord
+    getUserRecord: getUserRecord,
+
+//Get details of a saved recipe from the db by objID
+// On the front-end just pass this method an objID like this... PPAPI.getSavedRecipeDetails(objID)
+    getSavedRecipeDetails: getSavedRecipeDetails
   };

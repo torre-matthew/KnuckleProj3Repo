@@ -39,9 +39,10 @@ if (yourName == null) {
   yourName = "Guest";
 }
 
+
 function SavedMeals() {
   return(
-    <div className="container pp-saved-meals">
+    <div id="pp-all-meals" className="container pp-saved-meals">
       <div className="row">
         <div className="col s12 center">
           <h1>{yourName+"'s"} saved meals</h1>
@@ -144,5 +145,7 @@ function SavedMeals() {
   )
   
 }
+
+
 
 export default SavedMeals;
