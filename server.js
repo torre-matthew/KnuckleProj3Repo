@@ -32,7 +32,26 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pocketPantryDB", { useNewUrlParser: true });
+
+let databaseUri = "mongodb://localhost/pocketPantryDB"; 
+
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+  mongoose.connect(databaseUri);
+}
+
+// Connect to the Mongo DB
+let db = mongoose.connection;
+
+db.on('error', function(err) {
+  console.log('Mongoose Error: ', err);
+});
+
+db.once('open', function() {
+  console.log("Mongoose Connection Successful!!!");
+});
 
 // Routes
 app.use(routes);
