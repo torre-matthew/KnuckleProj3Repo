@@ -9,7 +9,10 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'app/*'\" \"npm run app\"",
     "app": "cd app && npm run start",
-    "seed": "node db/scripts/seedDB.js"
+    "seed": "node db/scripts/seedDB.js",
+    "install": "cd app && npm install",
+    "build": "cd app && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
