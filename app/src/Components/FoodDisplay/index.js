@@ -41,33 +41,36 @@ import result_icon4 from "./result_icon4.png";
      )
    }
  }
- 
-function FoodDisplayCard({
-  name,
-  image,
-  href
-}){
-  return(
-    <div className="col s12 m6">
-      <div className="pp-fd-results">
-        <div className="pp-sm-fav-btn">
-          <SaveFavorite />
-        </div>
-        <div>
-          <img src={image} alt="food"/>
-        </div>
-        <div className="pp-fd-icon">
-          <img src={result_icon1} alt="food icon" />
-        </div>
-        <div className="pp-fd-link">
-          <a href="/">See Recipe</a>
+
+//This is a functional component that displays a card for each recipe that we get back from Edamam.
+//It only displays these cards if the state(renderComponent) from our ingredients component is passed
+//as true.
+export function FoodDisplayCard(props){
+  let renderComponent = props.renderComponent;
+  if(renderComponent){
+    return(
+      <div data-name={props.name} className="col s12 m6">
+        <div className="pp-fd-results">
+          <div className="pp-sm-fav-btn">
+            <SaveFavorite />
+          </div>
+          <div>
+            <img src={props.image} alt="food"/>
+          </div>
+          <div className="pp-fd-icon">
+            <img src={result_icon1} alt="food icon" />
+          </div>
+          <div className="pp-fd-link">
+            <a href={props.href}>See Recipe</a>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-function FoodDisplay({children}) {
+//This is a functional component that acts as the container for the cards.
+export function FoodDisplay({children}) {
   return (
     <div className="pp-fd">
       <div className="container">
@@ -84,4 +87,4 @@ function FoodDisplay({children}) {
   );
 }
 
-export default {FoodDisplay, FoodDisplayCard}; 
+// export default {FoodDisplay, FoodDisplayCard}; 

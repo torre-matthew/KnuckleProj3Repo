@@ -2,8 +2,8 @@ import React, { Component }  from "react";
 import Button from "react-materialize/lib/Button";
 import "./style.css";
 import API from "../../utils/API";
-import FoodDisplay from "../FoodDisplay";
-import FoodDisplayCard from "../FoodDisplay";
+import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
+// import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
   state = {
@@ -41,6 +41,12 @@ class ListOfingredients extends Component {
     })
   }
 
+  //This is an onClick function for the search button that queries the Edamam API with the ingredients
+  //that the user types in. The recipes will be saved in the state array "recipes", and this state is
+  //cleared every time a new search happens. 
+  //
+  //Referencing the recipes array example:
+  //this.state.recipes.recipe.image for image. 
   searchEdamam = event => {
     event.preventDefault();
     this.setState({
@@ -51,7 +57,6 @@ class ListOfingredients extends Component {
     API.search(queryString)
       .then(res => {
         this.setState({recipes:res.data.hits});
-        this.renderFoodDisplay(this.state.showComponent);
         console.log(this.state.recipes);
         //res.data.hits[0].recipe.image
         //res.data.hits[0].recipe.uri
@@ -60,26 +65,6 @@ class ListOfingredients extends Component {
       })
       .catch(err => console.log(err))
     console.log(queryString);
-  }
-
-  renderFoodDisplay = (props) => {
-    let renderComponent = props.renderComponent;
-    if(renderComponent){
-      return(
-        <FoodDisplay>
-        {this.state.recipes.map(recipe => {
-          return ( 
-          <FoodDisplayCard
-              key={recipe.label}
-              name={recipe.label}
-              href={recipe.url}
-              image={recipe.image}
-            />
-          );
-        })}
-        </FoodDisplay>
-      )
-    }
   }
   
   render() {
@@ -107,8 +92,35 @@ class ListOfingredients extends Component {
           </div>
           <script></script>
         </div>
-        <renderFoodDisplay renderComponent = {this.state.showComponent}/>
-      </div>
+        {!this.state.recipes.length ? (
+                <div className="pp-fd">
+                <div className="container">
+                  <div className="row">
+                    <div className="col s12 center">
+                      <h1>Search to see recipes</h1>
+                    </div>
+                  </div>
+                  <div className="row">
+                  
+                  </div>
+                </div> 
+              </div>
+        ) : (
+        <FoodDisplay>
+          {this.state.recipes.map(recipe => {
+            return (
+              <FoodDisplayCard
+                key={recipe.recipe.label}
+                name={recipe.recipe.label}
+                href={recipe.recipe.href}
+                image={recipe.recipe.image}
+                renderComponent={this.state.showComponent}
+              />
+            );
+          })}
+        </FoodDisplay>
+        )}
+    </div>
     )
   }
 }
