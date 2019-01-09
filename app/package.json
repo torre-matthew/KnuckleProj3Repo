@@ -1,6 +1,5 @@
 {
   "name": "app",
-  "homepage": "https://torre-matthew.github.io//KnuckleProj3Repo",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
