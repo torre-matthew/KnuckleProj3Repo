@@ -9,11 +9,11 @@
 }
 
 .pp-foh-list {
-  display: inline-block;
+  display: block;
 }
 
 .pp-foh-controls {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 button.pp-red, button.pp-red:active, button.pp-red:focus {
@@ -43,7 +43,7 @@ button.pp-foh-remove {
   width: 20px;
   position: absolute;
   top: 0;
-  left: 300px;
+  right: -20px;
   box-shadow: 2px 2px 0 #ffd9cc;
 }
 
@@ -64,10 +64,11 @@ button.pp-red:hover  {
 
 input[type=text].pp-foh-text, input[type=text]:not(.browser-default):focus:not([readonly]) {
   line-height: 2.1;
-  width: 300px;
+  width: 100%;
   box-shadow: 7px 7px 0 #ffd9cc;
   border: 1px solid #c7c7c7;
   height: inherit;
   padding-left: 10px;
-  font-size: 1.27rem;
+  color: #575859;
+  font-size: 1.7rem;
 }

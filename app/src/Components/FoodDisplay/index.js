@@ -77,7 +77,7 @@ export function FoodDisplay({children}) {
       <div className="container">
         <div className="row">
           <div className="col s12 center">
-            <h1>Here are some meals to consider}</h1>
+            <h1>Here are some meals to consider</h1>
           </div>
         </div>
         <div className="row">
