@@ -12,6 +12,7 @@ let getUsersSavedRecipes = (googleId) => {
 let getUserRecord = (googleId) => {
   axios.get('/api/user/' + googleId)
   .then(function(response) {
+    console.log(response);
   });
 }
 

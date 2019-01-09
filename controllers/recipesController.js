@@ -9,7 +9,7 @@ let saveRecipe = (req, res) => {
 }
 
 let getSavedRecipeByObjID = (req, res) => {
-    db.SavedRecipes.findOne({"_id": req.params.objID})
+    db.SavedRecipes.find({"_id": {$in: req.params.savedRecipes}})
     .then(data => {
         res.json(data) 
     })
