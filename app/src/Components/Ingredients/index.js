@@ -6,6 +6,7 @@ import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
+  
   state = {
     ingredients: [""],
     recipes:[],
@@ -70,7 +71,7 @@ class ListOfingredients extends Component {
   render() {
     return (
       <div>
-        <div className="pp-foh-list row">
+        <div className="pp-foh-list row container">
           <div className="col s12 m6">
           <ul className="pp-foh-items">
           {this.state.ingredients.map((ingredient, index) => (
@@ -96,7 +97,7 @@ class ListOfingredients extends Component {
                 <div className="pp-fd">
                 <div className="container">
                   <div className="row">
-                    <div className="col s12 center">
+                    <div className="col s12">
                       <h1>Search to see recipes</h1>
                     </div>
                   </div>

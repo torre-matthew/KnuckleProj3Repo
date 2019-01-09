@@ -3,7 +3,7 @@
   color: #ff4301;
 }
 
-.pp-foh h2 {
+.pp-foh h2, h2.pp-foh {
   font-size: 1.56rem;
   color: #ff4301;
 }
