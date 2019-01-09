@@ -5,6 +5,7 @@ import API from "../../utils/API";
 
 
 class ListOfingredients extends Component {
+  
   state = {
     ingredients: [""]
   }

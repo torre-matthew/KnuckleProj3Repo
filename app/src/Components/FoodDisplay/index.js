@@ -9,6 +9,7 @@ import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
 
+
  class SaveFavorite extends Component {
    constructor(props) {
      super(props)
@@ -42,14 +43,13 @@ import result_icon4 from "./result_icon4.png";
    }
  }
 
-
 function FoodDisplay() {
   return (
     <div className="pp-fd">
       <div className="container">
         <div className="row">
           <div className="col s12 center">
-            <h1>Here are some meals to consider</h1>
+            <h1>Here are some meals to consider}</h1>
           </div>
         </div>
         <div className="row">
