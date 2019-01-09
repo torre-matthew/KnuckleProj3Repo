@@ -7,7 +7,7 @@ function Footer() {
     <div>
       <footer className="page-footer">
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <div className="col l6 s12">
               <h5 className="white-text">Footer Content</h5>
               <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
@@ -21,11 +21,11 @@ function Footer() {
                 <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="footer-copyright">
-          <div className="container">
-            <img src={ck_logo} className="ck-logo" alt="Crimson Knuckle logo" />The Crimson Knuckles<span className="ck-copyright">&copy; 2019</span>
+          <div className="container center">
+            <img src={ck_logo} className="ck-logo" alt="Crimson Knuckle logo" /><span className="ck-copyright">The Crimson Knuckles &copy; 2019</span>
            
           </div>
         </div>

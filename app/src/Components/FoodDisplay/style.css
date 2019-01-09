@@ -12,12 +12,12 @@
 .pp-fd {
     background: #f7f7f7;
     position: relative;
-    padding-top: 145px;
+    /* padding-top: 145px; */
     padding-bottom: 95px;
 }
 
 .pp-fd h1 {
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   color: #ff4301;
 }
 

@@ -2,6 +2,10 @@
   margin-right: 10px;
 }
 
+.btn {
+  border-radius: 0;
+}
+
 button.success {
   background-color: rgb(255, 255, 255); 
   display: inline-flex; 

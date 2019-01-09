@@ -5,7 +5,7 @@ function FoodDetails() {
   return(
     <div className="container pp-food-details">
       <div className="row">
-        <div className="col s12 center">
+        <div className="col s12">
           <h1>Great! Let’s get started on a fabulous (dish name here) meal!</h1>
         </div>
       </div>
