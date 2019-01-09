@@ -15,16 +15,16 @@ const logout = () => {
 // if they don't, create a record for them in the Users collection, then save name and email address to session storage for display in the app while their session is live. 
 let checkIfUserAlreadyExistsInDB = (response) => {
     PPAPI.getUserRecord(response.profileObj.googleId); 
-    // if (PPAPI.getUserRecord(response.profileObj.googleId) != null) {
-    //     sessionStorage.setItem("un", response.profileObj.name);
-    //     sessionStorage.setItem("em", response.profileObj.email);
-    //     cb(response.profileObj.googleId, addSavedRecipesToSessionStorage);
-    // }  
-    // else {
-    //     PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
-    //     sessionStorage.setItem("un", response.profileObj.name);
-    //     sessionStorage.setItem("em", response.profileObj.email);
-    // }
+    if (PPAPI.getUserRecord(response.profileObj.googleId) != null) {
+        sessionStorage.setItem("un", response.profileObj.name);
+        sessionStorage.setItem("em", response.profileObj.email);
+        cb(response.profileObj.googleId, addSavedRecipesToSessionStorage);
+    }  
+    else {
+        PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
+        sessionStorage.setItem("un", response.profileObj.name);
+        sessionStorage.setItem("em", response.profileObj.email);
+    }
 }
 
 // let getSavedRecipesFromDB = (googleId, cb) => {
