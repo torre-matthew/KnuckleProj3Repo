@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Ingredients from "../Ingredients";
 class SearchBarForm extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,7 @@ class SearchBarForm extends Component {
   }
 
   onInputChange(term) {
-    this.setState({ term: term });
+    this.setState({ term:term});
     this.props.onChange(term);
   }
 

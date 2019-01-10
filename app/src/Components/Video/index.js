@@ -8,7 +8,7 @@ import VideoPlayer from './VideoDisplay'
 import "./style.css"
 // import YouTube from 'react-youtube';
 
-
+import ListOfingredients from '../Ingredients';
 
 const YT_API = "AIzaSyAson-jfu7sHopOIhJ3NGOqJI-khuXm4-M";
 
