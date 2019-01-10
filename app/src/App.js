@@ -10,7 +10,6 @@ import FoodOnHand from "./Components/FoodOnHand";
 
 import Carousel from "./Components/Carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
 import FoodDisplay from "./Components/FoodDisplay";
 import FoodDetails from "./Components/FoodDetails";
 import SavedMeals from "./Components/SavedMeals";
@@ -28,7 +27,6 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />   
         </Header>
         <Carousel />
-        {/* <Slider /> */}
         <FoodOnHand />
         <FoodDetails />
         <SavedMeals />

@@ -10,8 +10,8 @@ if(yourName==null) {
 
 function FoodOnHand() {
   return (
-    <div className="container pp-foh">
-      <Row>
+    <div className="pp-foh">
+      <Row className="container">
         <h1>Hello {yourName}, Welcome to your Pocket Pantry!</h1>
         <h2>What ingredients do you have on-hand today?</h2>
       </Row>

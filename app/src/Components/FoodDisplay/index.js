@@ -9,6 +9,7 @@ import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
 
+
  class SaveFavorite extends Component {
    constructor(props) {
      super(props)
