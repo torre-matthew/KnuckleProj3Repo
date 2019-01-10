@@ -120,6 +120,7 @@ class ListOfingredients extends Component {
             );
           })}
         </FoodDisplay>
+       
         )}
     </div>
     )
