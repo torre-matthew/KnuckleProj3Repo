@@ -11,12 +11,12 @@ const logout = () => {
 
 //THis function is checking to see if the user logging in via google already has a record in the database.
 // It will make sure that mulitple records aren't created for the same googleId.
-// if the do, save name and email address to session storage for display in the app while their session is live.
+// if they do have a user in the db, save name and email address to session storage for display in the app while their session is live.
 // if they don't, create a record for them in the Users collection, then save name and email address to session storage for display in the app while their session is live. 
 let checkIfUserAlreadyExistsInDB = (response) => {
     PPAPI.getUserRecord(response.profileObj.googleId)
-    .then(function(userRecord) {
-        if (userRecord) {
+    .then(userRecord => {
+        if (userRecord.data != null) {
             sessionStorage.setItem("un", response.profileObj.name);
             sessionStorage.setItem("em", response.profileObj.email);
             sessionStorage.setItem("img", response.profileObj.imageUrl);
@@ -24,7 +24,8 @@ let checkIfUserAlreadyExistsInDB = (response) => {
         }  
         else {
             PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email)
-            .then(function(userRecord) {
+            .then(createdUserRecord => {
+                console.log("User Record Created: " + createdUserRecord);
                 sessionStorage.setItem("un", response.profileObj.name);
                 sessionStorage.setItem("em", response.profileObj.email);
                 sessionStorage.setItem("img", response.profileObj.imageUrl);
@@ -52,8 +53,7 @@ let addSavedRecipesToSessionStorage = (arr) => {
 class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
-            checkIfUserAlreadyExistsInDB(response);
-            
+            checkIfUserAlreadyExistsInDB(response); 
           }
 
         return(
