@@ -21,6 +21,9 @@ componentDidMount() {
   this.getSavedRecipesFromSessionStorage();
 }
 
+// This function checks to see if there is logged in user info stored in session storage. 
+// If there is, it will display name, email, and image in the side nave. If not, the experience
+// defaults to the guest experience.
 displayNameOrGuest = () => {
 let yourName = sessionStorage.getItem("un");
 let yourEmail = sessionStorage.getItem("em");
@@ -42,6 +45,8 @@ let yourImage = sessionStorage.getItem("img");
   }
 }
 
+// This function is getting a logged in user's saved recipes from the db and storing it in session storage
+// for easy access whenever we need it.
 getSavedRecipesFromSessionStorage = () => {
   let recipesObj = JSON.parse(sessionStorage.getItem("savedRecipes"));
   console.log(recipesObj);
