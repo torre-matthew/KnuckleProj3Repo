@@ -6,7 +6,6 @@ import "./style.css";
 
 var yourName = sessionStorage.getItem("un");
 var yourEmail = sessionStorage.getItem("em");
-var yourImage = sessionStorage.getItem("img");
 
 if (yourName == null) {
   yourName = "Guest";
@@ -14,7 +13,6 @@ if (yourName == null) {
 if (yourEmail == null) {
   yourEmail = "";
 }
-
 class Sidenav extends React.Component {
 render() {
   return (
@@ -25,7 +23,7 @@ render() {
     <SideNavItem className="no-hover" userView
     user={{
       background: 'images/pantry.jpg',
-      image: yourImage,
+      image: 'images/dc.png',
       name: yourName,
       email: yourEmail
     }}

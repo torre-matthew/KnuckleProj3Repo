@@ -65,7 +65,6 @@ class ListOfingredients extends Component {
         //res.data.hits[0].recipe.label
       })
       .catch(err => console.log(err))
-    console.log(queryString);
   }
   
   render() {

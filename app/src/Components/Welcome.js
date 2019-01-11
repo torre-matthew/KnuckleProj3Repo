@@ -14,46 +14,26 @@ const logout = () => {
 // if the do, save name and email address to session storage for display in the app while their session is live.
 // if they don't, create a record for them in the Users collection, then save name and email address to session storage for display in the app while their session is live. 
 let checkIfUserAlreadyExistsInDB = (response) => {
-    PPAPI.getUserRecord(response.profileObj.googleId)
-    .then(function(userRecord) {
-        if (userRecord) {
-            sessionStorage.setItem("un", response.profileObj.name);
-            sessionStorage.setItem("em", response.profileObj.email);
-            sessionStorage.setItem("img", response.profileObj.imageUrl);
-            getSavedRecipesFromDB(response.profileObj.googleId);
-        }  
-        else {
-            PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email)
-            .then(function(userRecord) {
-                sessionStorage.setItem("un", response.profileObj.name);
-                sessionStorage.setItem("em", response.profileObj.email);
-                sessionStorage.setItem("img", response.profileObj.imageUrl);
-                window.location.reload(); // This reload is here so that once logged in, the user doesn't have to manually refresh to see their data appear in the app.
-            });  
-        }
-    });
+    if (PPAPI.getUserRecord(response.profileObj.googleId)) {
+        sessionStorage.setItem("un", response.profileObj.name);
+        sessionStorage.setItem("em", response.profileObj.email);
+        PPAPI.getUsersSavedRecipes(response.profileObj.googleId);
+    }  
+    else {
+        PPAPI.createUser(response.profileObj.name, response.profileObj.googleId, response.profileObj.imageUrl, response.profileObj.email);
+        sessionStorage.setItem("un", response.profileObj.name);
+        sessionStorage.setItem("em", response.profileObj.email);
+    }
 }
 
-// Based on googleId of logged in user get their saved recipes and call the addSavedRecipesToSessionStorage function
-// to store those recipes in session storage
-let getSavedRecipesFromDB = (googleId) => {
-    PPAPI.getUsersSavedRecipes(googleId).then(userRecipes => {
-        addSavedRecipesToSessionStorage(userRecipes.data);
-        
-    });        
-}
 
-//Stores an array of saved recipes in sesion storage.
-let addSavedRecipesToSessionStorage = (arr) => {
-    sessionStorage.setItem("savedRecipes", JSON.stringify(arr));
-    window.location.reload(); // This reload is here so that once logged in, the user doesn't have to manually refresh to see their data appear in the app.
-} 
    
 class Welcome extends Component{
     render(){
         const responseGoogle = (response) => {
+            console.log(response);
             checkIfUserAlreadyExistsInDB(response);
-            
+            window.location.reload(); // This reload is here so that once logged in, the user doesn't have to manually refresh to see their data appear in the app.
           }
 
         return(

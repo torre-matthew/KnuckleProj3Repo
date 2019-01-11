@@ -1,20 +1,10 @@
 const db = require("../db/models");
 
-
 // This function takes the googleId from the api get request and queries the db to look for the Users collection that
 // matches that google Id. Return the savedRecipes array when found.
-// we then take the savedRecipes array and find all recipes from the savedRecipes collection that match the recipeIDs in that array
 let findUsersSavedRecipes = (req, res) => {
     db.Users.findOne({"googleId": req.params.googleId}, "savedRecipes")
-    .then(data => {
-            db.SavedRecipes.find({"_id": {$in: data.savedRecipes}})
-        .then(data => {
-            res.json(data) 
-        })
-        .catch(err => {
-            console.error(err);
-        });
-    })
+    .then(data => res.json(data))
     .catch(err => console.log(err));
 }
 

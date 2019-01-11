@@ -4,24 +4,32 @@ import axios from "axios";
 //Methods for using the Pocket Pantry API
 
 let getUsersSavedRecipes = (googleId) => {
-  return axios.get('/api/user/saved-recipes/' + googleId)
+  axios.get('/api/user/saved-recipes/' + googleId)
+  .then(function(response) {
+  });
 }
 
 let getUserRecord = (googleId) => {
-  return axios.get('/api/user/' + googleId)
+  axios.get('/api/user/' + googleId)
+  .then(function(response) {
+  });
 }
 
 let getSavedRecipeDetails = (objID) => {
-  return axios.get('/api/savedRecipe/' + objID)
+  axios.get('/api/savedRecipe/' + objID)
+  .then(function(response) {
+  });
 }
 
 let createUser = (name, googleId, imageUrl, email) => {
-  return axios.post('/api/user/create-user', {
+  axios.post('/api/user/create-user', {
       name: name,
       googleId: googleId,
       imageUrl: imageUrl,
       email: email
   })
+  .then(function(response) {
+  });
 }
 
 export default {

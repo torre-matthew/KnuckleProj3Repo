@@ -30,10 +30,17 @@ import result_icon4 from "./result_icon4.png";
    }
  }
 
+function theButton() {
+  const saveButton = document.getElementById("saveRecipe");
+  saveButton.addEventListener("click", function (e) {
+    console.log("button was clicked");
+  })
+}
+
  class SaveFavoriteChild extends React.Component {
    render() {
      return (
-       <span className="pp-sm-favme">
+       <span id="saveRecipe" className="pp-sm-favme">
        <i className={ this.props.className }
        onClick={ this.props.toggleClassName }
        >
@@ -42,6 +49,9 @@ import result_icon4 from "./result_icon4.png";
      )
    }
  }
+
+
+
 
 //This is a functional component that displays a card for each recipe that we get back from Edamam.
 //It only displays these cards if the state(renderComponent) from our ingredients component is passed
