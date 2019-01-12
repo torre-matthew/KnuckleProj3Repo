@@ -11,7 +11,7 @@ const logout = () => {
 
 //THis function is checking to see if the user logging in via google already has a record in the database.
 // It will make sure that mulitple records aren't created for the same googleId.
-// if the do, save name and email address to session storage for display in the app while their session is live.
+// if they do have a user in the db, save name and email address to session storage for display in the app while their session is live.
 // if they don't, create a record for them in the Users collection, then save name and email address to session storage for display in the app while their session is live. 
 let checkIfUserAlreadyExistsInDB = (response) => {
     PPAPI.getUserRecord(response.profileObj.googleId)
@@ -40,12 +40,12 @@ let checkIfUserAlreadyExistsInDB = (response) => {
 let getSavedRecipesFromDB = (googleId) => {
     PPAPI.getUsersSavedRecipes(googleId).then(userRecipes => {
         if (userRecipes.data.length > 0) {
-        addSavedRecipesToSessionStorage(userRecipes.data);
+            addSavedRecipesToSessionStorage(userRecipes.data);
         }
         else {
             window.location.reload();
         }
-    });        
+    });
 }
 
 //Stores an array of saved recipes in sesion storage.
