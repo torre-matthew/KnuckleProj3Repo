@@ -13,7 +13,8 @@ class ListOfingredients extends Component {
     recipes:[],
     showComponent:false,
     showRecipeIngredients: false,
-    recipeIngredients:[]
+    recipeIngredients:[],
+    youtubeSearchName:[]
   }
 
   handleText = i => e => {
@@ -72,15 +73,30 @@ class ListOfingredients extends Component {
     console.log(queryString);
   }
 
-  changeButtonState = (dataFromChild) => {
+//This function searches the Edamam API for the SPECIFIC recipe clicked by the user,
+//and returns only that recipe's information, and updates our states with this information.
+//State recipeIngredients contains all the ingredients for the recipe
+//State youtubeSearchName contains the name for the recipe.
+  showRecipe = (recipeID) => {
+    console.log(recipeID);
+    let array = recipeID.split("_");
+    recipeID = array[1];
+    console.log(recipeID);
     this.setState({
       showRecipeIngredients:true,
-      recipeIngredients:[]
+      recipeIngredients:[],
+      youtubeSearchName:[]
     });
-    this.setState({
-      recipeIngredients:dataFromChild
-    })
-    console.log(dataFromChild);
+    API.searchByID(recipeID)
+      .then(res => {
+        this.setState({
+          recipeIngredients:res.data[0].ingredients,
+          youtubeSearchName:res.data[0].label
+        })
+        console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
+        console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -131,8 +147,8 @@ class ListOfingredients extends Component {
                   href={recipe.recipe.href}
                   image={recipe.recipe.image}
                   renderComponent={this.state.showComponent}
-                  ingredients={recipe.recipe.ingredientLines}
-                  buttonClick={this.changeButtonState.bind(this)}
+                  recipeID={recipe.recipe.uri}
+                  showRecipe={this.showRecipe.bind(this)}
                 />
               );
             })}

@@ -43,12 +43,18 @@ import result_icon4 from "./result_icon4.png";
    }
  }
 
+export function Pop(button){
+  let recipeURI = button.getAttribute("data-recipeID");
+  console.log(recipeURI);
+}
+
 //This is a functional component that displays a card for each recipe that we get back from Edamam.
 //It only displays these cards if the state(renderComponent) from our ingredients component is passed
 //as true.
 export function FoodDisplayCard(props){
   let renderComponent = props.renderComponent;
-  let ingredients = props.ingredients;
+//The function showRecipe from our Ingredients component is passed as a prop to the FoodDisplayCard Component,
+//and this function is run given the recipeID as a parameter. 
   if(renderComponent){
     return(
       <div data-name={props.name} className="col s12 m6">
@@ -63,7 +69,7 @@ export function FoodDisplayCard(props){
             <img src={result_icon1} alt="food icon" />
           </div>
           <div className="pp-fd-link">
-            <a href={props.href} data-ingredients={props.ingredients} onClick={props.buttonClick(ingredients)}>See Recipe</a>
+            <a href={props.href} data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
             {/* props.buttonClick */}
           </div>
         </div>
