@@ -1,16 +1,16 @@
-import React, { Component }  from "react";
+import React, { Component } from "react";
 import Button from "react-materialize/lib/Button";
 import "./style.css";
 import API from "../../utils/API";
-import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
+import { FoodDisplay, FoodDisplayCard } from "../FoodDisplay";
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
-  
+
   state = {
     ingredients: [""],
-    recipes:[],
-    showComponent:false
+    recipes: [],
+    showComponent: false
   }
 
   handleText = i => e => {
@@ -52,12 +52,12 @@ class ListOfingredients extends Component {
     event.preventDefault();
     this.setState({
       showComponent: true,
-      recipes:[]
+      recipes: []
     });
     let queryString = this.state.ingredients;
     API.search(queryString)
       .then(res => {
-        this.setState({recipes:res.data.hits});
+        this.setState({ recipes: res.data.hits });
         console.log(this.state.recipes);
         //res.data.hits[0].recipe.image
         //res.data.hits[0].recipe.uri
@@ -65,26 +65,27 @@ class ListOfingredients extends Component {
         //res.data.hits[0].recipe.label
       })
       .catch(err => console.log(err))
+    console.log(queryString);
   }
-  
+
   render() {
     return (
       <div>
         <div className="pp-foh-list row container">
           <div className="col s12 m6">
-          <ul className="pp-foh-items">
-          {this.state.ingredients.map((ingredient, index) => (
-            <li key={index}>
-              <input
-                type="text"
-                className="pp-foh-text"
-                onChange={this.handleText(index)}
-                value={ingredient}
-              />
-              <button id="del" className="pp-foh-remove pp-red" onClick={this.handleDelete(index)}><i className="tiny material-icons">close</i></button>
-            </li>
-          ))}
-          </ul>
+            <ul className="pp-foh-items">
+              {this.state.ingredients.map((ingredient, index) => (
+                <li key={index}>
+                  <input
+                    type="text"
+                    className="pp-foh-text"
+                    onChange={this.handleText(index)}
+                    value={ingredient}
+                  />
+                  <button id="del" className="pp-foh-remove pp-red" onClick={this.handleDelete(index)}><i className="tiny material-icons">close</i></button>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="pp-foh-controls col s12 m6">
             <Button waves='light' className="pp-red pp-foh-search" onClick={this.searchEdamam}>Search</Button>
@@ -93,35 +94,35 @@ class ListOfingredients extends Component {
           <script></script>
         </div>
         {!this.state.recipes.length ? (
-                <div className="pp-fd">
-                <div className="container">
-                  <div className="row">
-                    <div className="col s12">
-                      <h1>Search to see recipes</h1>
-                    </div>
-                  </div>
-                  <div className="row">
-                  
-                  </div>
-                </div> 
+          <div className="pp-fd">
+            <div className="container">
+              <div className="row">
+                <div className="col s12">
+                  <h1>Search to see recipes</h1>
+                </div>
               </div>
+              <div className="row">
+
+              </div>
+            </div>
+          </div>
         ) : (
-        <FoodDisplay>
-          {this.state.recipes.map(recipe => {
-            return (
-              <FoodDisplayCard
-                key={recipe.recipe.label}
-                name={recipe.recipe.label}
-                href={recipe.recipe.href}
-                image={recipe.recipe.image}
-                renderComponent={this.state.showComponent}
-              />
-            );
-          })}
-        </FoodDisplay>
-       
-        )}
-    </div>
+            <FoodDisplay>
+              {this.state.recipes.map(recipe => {
+                return (
+                  <FoodDisplayCard
+                    key={recipe.recipe.label}
+                    name={recipe.recipe.label}
+                    href={recipe.recipe.href}
+                    image={recipe.recipe.image}
+                    renderComponent={this.state.showComponent}
+                  />
+                );
+              })}
+            </FoodDisplay>
+
+          )}
+      </div>
     )
   }
 }

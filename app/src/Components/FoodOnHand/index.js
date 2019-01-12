@@ -4,7 +4,7 @@ import Row from "react-materialize/lib/Row";
 import Ingredients from "../Ingredients";
 
 var yourName = sessionStorage.getItem("un");
-if(yourName==null) {
+if (yourName == null) {
   yourName = "Guest";
 }
 
