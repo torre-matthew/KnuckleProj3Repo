@@ -48,6 +48,7 @@ import result_icon4 from "./result_icon4.png";
 //as true.
 export function FoodDisplayCard(props){
   let renderComponent = props.renderComponent;
+  let ingredients = props.ingredients;
   if(renderComponent){
     return(
       <div data-name={props.name} className="col s12 m6">
@@ -62,7 +63,8 @@ export function FoodDisplayCard(props){
             <img src={result_icon1} alt="food icon" />
           </div>
           <div className="pp-fd-link">
-            <a href={props.href}>See Recipe</a>
+            <a href={props.href} data-ingredients={props.ingredients} onClick={props.buttonClick(ingredients)}>See Recipe</a>
+            {/* props.buttonClick */}
           </div>
         </div>
       </div>
