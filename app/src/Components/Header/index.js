@@ -16,7 +16,7 @@ function Header() {
     <nav className="navbar navbar-expand-sm">
       <div className="nav-wrapper container">
           <a href="#!" className="brand-logo"><img src={logo} className="App-logo" alt="logo" /> </a>
-        <ul className="right hide-on-med-and-down">
+        <ul className="right">
             <li className="google-modal">
             <Modal
               className="pp-sign-in"

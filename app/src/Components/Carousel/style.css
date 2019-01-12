@@ -37,3 +37,27 @@
   top: 120px;
   left: 70px;
 }
+
+@media only screen and (min-width: 414px) {
+  .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
+    font-size: 1.2rem;
+  }
+
+  .carousel .slide:first-of-type::before {
+    bottom: 100px;
+    right: 120px;
+  }
+
+  .carousel .slide:nth-child(2)::before {
+    top: 100px;
+    right: 60px;
+  }
+
+  .carousel .slide:last-of-type::before {
+    left: 45px;
+  }
+
+  .g-buttons button:last-of-type {
+    margin-top: 10px;
+  }
+}

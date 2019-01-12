@@ -26,6 +26,10 @@
     color: #ff4301;
 }
 
+.pp-fd .container {
+  position: relative;
+}
+
 .pp-fd-results::before {
   background: #333333 none repeat scroll 0 0;
   content: "";
