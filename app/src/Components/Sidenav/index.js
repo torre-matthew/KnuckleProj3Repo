@@ -77,7 +77,7 @@ render() {
       <SideNavItem className="no-hover" subheader>Saved Recipes</SideNavItem>
   <SideNavItem divider />
     {this.state.savedRecipes.map(recipes => (
-      <SideNavItem waves href="">{recipes.name}</SideNavItem>
+      <SideNavItem waves href="" key={recipes._id}>{recipes.name}</SideNavItem>
     ))}
 </SideNav>
   )
