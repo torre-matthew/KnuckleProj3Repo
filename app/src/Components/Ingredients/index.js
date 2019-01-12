@@ -4,7 +4,7 @@ import "./style.css";
 import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 // import FoodDisplayCard from "../FoodDisplay";
-import Video from "../Video";
+
 class ListOfingredients extends Component {
   
   state = {
