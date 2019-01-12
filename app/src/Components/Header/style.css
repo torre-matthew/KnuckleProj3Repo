@@ -74,8 +74,31 @@ nav .brand-logo {
   display: block;
 }
 
+@media only screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: -40px;
+    top: -10px;
+    transform: scale(.9,.9);
+  }
+}
 
-@media only screen and (min-width: 414px) {
+@media only screen and (max-width: 768px) {
+  nav .brand-logo {
+    transform: scale(.9,.9);
+    left: -40px;
+    top: -10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  nav .brand-logo {
+    transform: scale(.8,.8);
+    left: -40px;
+    top: -20px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
   nav .brand-logo {
     transform: scale(.7,.7);
     left: -40px;
