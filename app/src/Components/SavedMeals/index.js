@@ -46,7 +46,9 @@ if (yourName == null) {
 
 class SavedMeals extends React.Component {
 state = {
-  savedRecipes: []
+  savedRecipes: [],
+  sectionMessage: "You have no saved recipes",
+  yourName:""
   }
 
 componentDidMount() {
@@ -59,7 +61,9 @@ getSavedRecipesFromSessionStorage = () => {
 
   if (recipesObj != null) {
     this.setState({
-      savedRecipes: recipesObj
+      savedRecipes: recipesObj,
+      yourName: sessionStorage.getItem("un"),
+      sectionMessage: yourName + " 's Saved Recipes"
     });
   }
 }
@@ -71,7 +75,7 @@ getSavedRecipesFromSessionStorage = () => {
       <div id="pp-all-meals" className="container pp-saved-meals">
         <div className="row">
           <div className="col s12 center">
-            <h1>{yourName+"'s"} saved meals</h1>
+            <h1>{this.state.sectionMessage}</h1>
           </div>
         </div>
         <div className="row">

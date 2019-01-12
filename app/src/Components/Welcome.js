@@ -39,8 +39,12 @@ let checkIfUserAlreadyExistsInDB = (response) => {
 // to store those recipes in session storage
 let getSavedRecipesFromDB = (googleId) => {
     PPAPI.getUsersSavedRecipes(googleId).then(userRecipes => {
+        if (userRecipes.data.length > 0) {
         addSavedRecipesToSessionStorage(userRecipes.data);
-        
+        }
+        else {
+            window.location.reload();
+        }
     });        
 }
 
