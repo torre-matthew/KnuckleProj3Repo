@@ -48,6 +48,7 @@ nav .brand-logo {
   width: 40px;
   position: relative;
   background-color:#ff4301;
+  overflow: hidden;
 }
 
 .google-modal .btn i {
@@ -61,8 +62,8 @@ nav .brand-logo {
 
 .google-modal img {
   position: absolute;
-  top: 28px;
-  left: 28px;
+  top: -28px;
+  left: -28px;
   transform: scale(.5,.5);
 }
 
