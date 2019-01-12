@@ -8,7 +8,7 @@ router.route("/")
 
 // Get details of a saved recipe based on the obj id of that saved recipe in the db
 // Matches with "/api/savedRecipe/############"
-router.route("/:objID")
+router.route("/:savedRecipes")
   .get(recipesController.getSavedRecipe);
 
 // Matches with "/api/savedRecipe/delete-recipe"
