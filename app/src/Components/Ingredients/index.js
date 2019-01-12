@@ -3,6 +3,7 @@ import Button from "react-materialize/lib/Button";
 import "./style.css";
 import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
+import Video from "../Video";
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
@@ -10,7 +11,10 @@ class ListOfingredients extends Component {
   state = {
     ingredients: [""],
     recipes:[],
-    showComponent:false
+    showComponent:false,
+    showRecipeIngredients: false,
+    recipeIngredients:[],
+    youtubeSearchName:[]
   }
 
   handleText = i => e => {
@@ -52,6 +56,7 @@ class ListOfingredients extends Component {
     event.preventDefault();
     this.setState({
       showComponent: true,
+      showRecipeIngredients:false,
       recipes:[]
     });
     let queryString = this.state.ingredients;
@@ -67,7 +72,33 @@ class ListOfingredients extends Component {
       .catch(err => console.log(err))
     console.log(queryString);
   }
-  
+
+//This function searches the Edamam API for the SPECIFIC recipe clicked by the user,
+//and returns only that recipe's information, and updates our states with this information.
+//State recipeIngredients contains all the ingredients for the recipe
+//State youtubeSearchName contains the name for the recipe.
+  showRecipe = (recipeID) => {
+    console.log(recipeID);
+    let array = recipeID.split("_");
+    recipeID = array[1];
+    console.log(recipeID);
+    this.setState({
+      showRecipeIngredients:true,
+      recipeIngredients:[],
+      youtubeSearchName:[]
+    });
+    API.searchByID(recipeID)
+      .then(res => {
+        this.setState({
+          recipeIngredients:res.data[0].ingredients,
+          youtubeSearchName:res.data[0].label
+        })
+        console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
+        console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div>
@@ -94,6 +125,37 @@ class ListOfingredients extends Component {
           <script></script>
         </div>
         {!this.state.recipes.length ? (
+          <div className="pp-fd">
+            <div className="container">
+              <div className="row">
+                <div className="col s12">
+                  <h1>Search to see recipes</h1>
+                </div>
+              </div>
+              <div className="row">
+              
+              </div>
+            </div> 
+          </div>
+        ) : (
+          <FoodDisplay>
+            {this.state.recipes.map(recipe => {
+              return (
+                <FoodDisplayCard
+                  key={recipe.recipe.label}
+                  name={recipe.recipe.label}
+                  href={recipe.recipe.href}
+                  image={recipe.recipe.image}
+                  renderComponent={this.state.showComponent}
+                  recipeID={recipe.recipe.uri}
+                  showRecipe={this.showRecipe.bind(this)}
+                />
+              );
+            })}
+          </FoodDisplay>
+        )}
+
+        {/* {!this.state.recipes.length ? (
                 <div className="pp-fd">
                 <div className="container">
                   <div className="row">
@@ -107,21 +169,11 @@ class ListOfingredients extends Component {
                 </div> 
               </div>
         ) : (
-        <FoodDisplay>
-          {this.state.recipes.map(recipe => {
-            return (
-              <FoodDisplayCard
-                key={recipe.recipe.label}
-                name={recipe.recipe.label}
-                href={recipe.recipe.href}
-                image={recipe.recipe.image}
-                renderComponent={this.state.showComponent}
-              />
-            );
-          })}
-        </FoodDisplay>
+        <Video
+        {...this.state.recipes[0].recipe.label}
+        />
        
-        )}
+        )} */}
     </div>
     )
   }
