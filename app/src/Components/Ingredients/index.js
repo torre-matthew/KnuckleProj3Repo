@@ -4,7 +4,7 @@ import "./style.css";
 import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 // import FoodDisplayCard from "../FoodDisplay";
-
+import Video from "../Video";
 class ListOfingredients extends Component {
   
   state = {
@@ -71,6 +71,7 @@ class ListOfingredients extends Component {
   render() {
     return (
       <div>
+      <div>
         <div className="pp-foh-list row container">
           <div className="col s12 m6">
           <ul className="pp-foh-items">
@@ -120,8 +121,12 @@ class ListOfingredients extends Component {
             );
           })}
         </FoodDisplay>
-       
         )}
+       {/* <Video>
+         {this.state.recipes[0].recipe.label}
+       </Video> */}
+        
+    </div>
     </div>
     )
   }
