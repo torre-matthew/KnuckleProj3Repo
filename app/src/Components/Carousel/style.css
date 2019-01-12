@@ -37,8 +37,55 @@
   top: 120px;
   left: 70px;
 }
+@media only screen and (max-width: 768px) {
+  .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
+    font-size: 1.7rem;
+  }
 
-@media only screen and (min-width: 414px) {
+  .carousel .slide:first-of-type::before {
+    bottom: 100px;
+    right: 120px;
+  }
+
+  .carousel .slide:nth-child(2)::before {
+    top: 100px;
+    right: 60px;
+  }
+
+  .carousel .slide:last-of-type::before {
+    left: 45px;
+  }
+
+  .g-buttons button:last-of-type {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
+    font-size: 1.57rem;
+  }
+
+  .carousel .slide:first-of-type::before {
+    bottom: 100px;
+    right: 120px;
+  }
+
+  .carousel .slide:nth-child(2)::before {
+    top: 100px;
+    right: 60px;
+  }
+
+  .carousel .slide:last-of-type::before {
+    left: 45px;
+  }
+
+  .g-buttons button:last-of-type {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
   .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
     font-size: 1.2rem;
   }
@@ -55,6 +102,55 @@
 
   .carousel .slide:last-of-type::before {
     left: 45px;
+  }
+
+  .g-buttons button:last-of-type {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
+    font-size: 1.1rem;
+  }
+
+  .carousel .slide:first-of-type::before {
+    bottom: 100px;
+    right: 120px;
+  }
+
+  .carousel .slide:nth-child(2)::before {
+    top: 100px;
+    right: 60px;
+  }
+
+  .carousel .slide:last-of-type::before {
+    left: 45px;
+  }
+
+  .g-buttons button:last-of-type {
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
+    font-size: .8rem;
+  }
+
+  .carousel .slide:first-of-type::before {
+    bottom: 59px;
+    right: 120px;
+  }
+
+  .carousel .slide:nth-child(2)::before {
+    top: 90px;
+    right: 100px;
+  }
+
+  .carousel .slide:last-of-type::before {
+    left: 10px;
+    top: 90px;
   }
 
   .g-buttons button:last-of-type {
