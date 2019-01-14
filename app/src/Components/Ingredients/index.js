@@ -4,6 +4,7 @@ import "./style.css";
 import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 import Video from "../Video";
+import {RecipeIngredients, FoodDetails} from "../FoodDetails"
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
@@ -14,6 +15,10 @@ class ListOfingredients extends Component {
     showComponent:false,
     showRecipeIngredients: false,
     recipeIngredients:[],
+    calories:[],
+    totalTime:[],
+    healthLabel:[],
+    dietLabel:[],
     youtubeSearchName:[]
   }
 
@@ -57,7 +62,13 @@ class ListOfingredients extends Component {
     this.setState({
       showComponent: true,
       showRecipeIngredients:false,
-      recipes:[]
+      recipes:[],
+      recipeIngredients:[],
+      calories:[],
+      totalTime:[],
+      healthLabel:[],
+      dietLabel:[],
+      youtubeSearchName:[]
     });
     let queryString = this.state.ingredients;
     API.search(queryString)
@@ -85,13 +96,21 @@ class ListOfingredients extends Component {
     this.setState({
       showRecipeIngredients:true,
       recipeIngredients:[],
+      calories:[],
+      totalTime:[],
+      healthLabel:[],
+      dietLabel:[],
       youtubeSearchName:[]
     });
     API.searchByID(recipeID)
       .then(res => {
         this.setState({
           recipeIngredients:res.data[0].ingredients,
-          youtubeSearchName:res.data[0].label
+          youtubeSearchName:res.data[0].label,
+          calories:res.data[0].calories,
+          totalTime:res.data[0].totalTime,
+          healthLabel:res.data[0].healthLabels,
+          dietLabel:res.data[0].dietLabels
         })
         console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
         console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
@@ -154,26 +173,17 @@ class ListOfingredients extends Component {
             })}
           </FoodDisplay>
         )}
-
-        {/* {!this.state.recipes.length ? (
-                <div className="pp-fd">
-                <div className="container">
-                  <div className="row">
-                    <div className="col s12">
-                      <h1>Search to see recipes</h1>
-                    </div>
-                  </div>
-                  <div className="row">
-                  
-                  </div>
-                </div> 
-              </div>
-        ) : (
-        <Video
-        {...this.state.recipes[0].recipe.label}
+        <FoodDetails
+          calories={this.state.calories}
+          totalTime={this.state.totalTime}
+          healthLabel={this.state.healthLabel}
+          dietLabel={this.state.dietLabel}
+        >
+        <RecipeIngredients
+          recipeIngredients={this.state.recipeIngredients}
         />
-       
-        )} */}
+        </FoodDetails>
+        )}
     </div>
     )
   }
