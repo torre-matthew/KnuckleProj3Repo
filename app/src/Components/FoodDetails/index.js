@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+// import { PromiseProvider } from "mongoose";
 
 function FoodDetails(props) {
   return(
@@ -40,11 +41,11 @@ function FoodDetails(props) {
           </table>
             <div className="btn waves-effect waves-light pp-recipe-rm">Read More</div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   )
 }
 
-export default FoodDetails;
+export default FoodDetails
