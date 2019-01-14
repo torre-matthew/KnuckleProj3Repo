@@ -3,6 +3,8 @@ import Button from "react-materialize/lib/Button";
 import "./style.css";
 import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
+import Video from "../Video";
+import FoodDetails from "../FoodDetails"
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
@@ -10,7 +12,16 @@ class ListOfingredients extends Component {
   state = {
     ingredients: [""],
     recipes:[],
-    showComponent:false
+    showComponent:false,
+    showRecipeIngredients: false,
+    recipeIngredients:[],
+    calories:[],
+    totalTime:[],
+    healthLabel:[],
+    dietLabel:[],
+    youtubeSearchName:[],
+    cautions:[],
+    href:[]
   }
 
   handleText = i => e => {
@@ -52,7 +63,16 @@ class ListOfingredients extends Component {
     event.preventDefault();
     this.setState({
       showComponent: true,
-      recipes:[]
+      showRecipeIngredients:false,
+      recipes:[],
+      recipeIngredients:[],
+      calories:[],
+      totalTime:[],
+      healthLabel:[],
+      dietLabel:[],
+      youtubeSearchName:[],
+      cautions:[],
+      href:[]
     });
     let queryString = this.state.ingredients;
     API.search(queryString)
@@ -67,7 +87,55 @@ class ListOfingredients extends Component {
       .catch(err => console.log(err))
     console.log(queryString);
   }
-  
+
+//This function searches the Edamam API for the SPECIFIC recipe clicked by the user,
+//and returns only that recipe's information, and updates our states with this information.
+//State recipeIngredients contains all the ingredients for the recipe
+//State youtubeSearchName contains the name for the recipe.
+  showRecipe = (recipeID) => {
+    console.log(recipeID);
+    let array = recipeID.split("_");
+    recipeID = array[1];
+    console.log(recipeID);
+    this.setState({
+      showRecipeIngredients:true,
+      recipeIngredients:[],
+      calories:[],
+      totalTime:[],
+      healthLabel:[],
+      dietLabel:[],
+      youtubeSearchName:[],
+      cautions:[],
+      href:[]
+    });
+    API.searchByID(recipeID)
+      .then(res => {
+        this.setState({
+          recipeIngredients:res.data[0].ingredientLines,
+          youtubeSearchName:res.data[0].label,
+          calories:res.data[0].calories,
+          totalTime:res.data[0].totalTime,
+          healthLabel:res.data[0].healthLabels,
+          dietLabel:res.data[0].dietLabels,
+          cautions:res.data[0].cautions,
+          href:res.data[0].url
+        })
+        if(res.data[0].totalTime === 0){
+          this.setState({
+            totalTime:["Unknown"]
+          })
+        }
+        if(res.data[0].cautions === undefined){
+          this.setState({
+            cautions:["None"]
+          })
+        }
+        console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
+        console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
+      })
+      .catch(err => console.log(err))
+  }
+
   render() {
     return (
       <div>
@@ -91,37 +159,56 @@ class ListOfingredients extends Component {
             <Button waves='light' className="pp-red pp-foh-search" onClick={this.searchEdamam}>Search</Button>
             <button className="btn-floating pp-red pp-foh-add" onClick={this.addIngredient}><i className="material-icons">add</i></button>
           </div>
-          <script></script>
         </div>
         {!this.state.recipes.length ? (
-                <div className="pp-fd">
-                <div className="container">
-                  <div className="row">
-                    <div className="col s12">
-                      <h1>Search to see recipes</h1>
-                    </div>
-                  </div>
-                  <div className="row">
-                  
-                  </div>
-                </div> 
+          <div className="pp-fd">
+            <div className="container">
+              <div className="row">
+                <div className="col s12">
+                  <h1>Search to see recipes</h1>
+                </div>
               </div>
+              <div className="row">
+              
+              </div>
+            </div> 
+          </div>
         ) : (
-        <FoodDisplay>
-          {this.state.recipes.map(recipe => {
-            return (
-              <FoodDisplayCard
-                key={recipe.recipe.label}
-                name={recipe.recipe.label}
-                link={recipe.recipe.shareAs}
-                image={recipe.recipe.image}
-                renderComponent={this.state.showComponent}
-              />
-            );
-          })}
-        </FoodDisplay>
-       
+          <FoodDisplay>
+            {this.state.recipes.map(recipe => {
+              return (
+                <FoodDisplayCard
+                  key={recipe.recipe.label}
+                  name={recipe.recipe.label}
+                  href={recipe.recipe.href}
+                  image={recipe.recipe.image}
+                  renderComponent={this.state.showComponent}
+                  recipeID={recipe.recipe.uri}
+                  showRecipe={this.showRecipe.bind(this)}
+                />
+              );
+            })}
+          </FoodDisplay>
         )}
+        {this.state.showRecipeIngredients ? (
+          <div>
+          <FoodDetails
+            healthLabels={this.state.healthLabel}
+            listOfIngredients={this.state.recipeIngredients}
+            name={this.state.youtubeSearchName}
+            calories={this.state.calories}
+            totalTime={this.state.totalTime}
+            dietLabel={this.state.dietLabel}
+            cautions={this.state.cautions}
+            href={this.state.href}
+          />
+          <Video
+          youtubeSearchName={this.state.youtubeSearchName} 
+          />
+        </div>) : 
+        ""}
+        
+        
     </div>
     )
   }

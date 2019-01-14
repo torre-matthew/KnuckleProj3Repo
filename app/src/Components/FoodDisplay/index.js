@@ -76,6 +76,8 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
 //as true.
 export function FoodDisplayCard(props){
   let renderComponent = props.renderComponent;
+//The function showRecipe from our Ingredients component is passed as a prop to the FoodDisplayCard Component,
+//and this function is run given the recipeID as a parameter. 
   if(renderComponent){
     return(
       <div id="theRecipe" data-name={props.name} className="col s12 m6">
@@ -91,7 +93,9 @@ export function FoodDisplayCard(props){
           </div>
           <div className="pp-fd-link">
             <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
-            <a data-scroll href="#getStarted" >See Recipe</a>
+            
+            <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
+            {/* props.buttonClick */}
           </div>
         </div>
       </div>

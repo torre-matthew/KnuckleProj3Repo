@@ -1,53 +1,81 @@
 import React from "react";
 import "./style.css";
+// import { PromiseProvider } from "mongoose";
 
-function FoodDetails() {
+function FoodDetails(props) {
   return(
-    <div className="container pp-food-details">
+    <div id="recipe-area" className="container pp-food-details">
       <div className="row">
         <div className="col s12">
-          <h1 id="getStarted">Great! Let’s get started on a fabulous (dish name here) meal!</h1>
+          <h1 id="getStarted">Great! Let’s get started on a fabulous {props.name}!</h1>
         </div>
       </div>
       <div className="row">
-        <div className="col s12 m6">
+        <div className="col s12 m4">
           <table>
             <thead>
               <tr>
                 <th>Ingredients</th>
-                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+            {props.listOfIngredients.map(ingredients => (
+              <tr>
+                <td>{ingredients}</td>
+              </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col s12 m4">
+          <table>
+            <thead>
+              <tr>
+                <th>Health and Diet Labels</th>
+              </tr>
+            </thead>
+            <tbody>
+            {props.healthLabels.map(healthLabels => (
+              <tr>
+                <td>{healthLabels}</td>
+              </tr>
+            ))}
+            {props.dietLabel.map(dietLabels => (
+              <tr>
+                <td>{dietLabels}</td>
+              </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col s12 m4">
+          <table>
+            <thead>
+              <tr>
+                <th>Miscellaneous</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Asparagus</td>
-                <td>1/2 lb. chopped</td>
+                <td>Calories: {props.calories}</td>
               </tr>
               <tr>
-                <td>Broccoli</td>
-                <td>1 Bunch chopped</td>
+                <td>Cook Time: {props.totalTime} Minutes</td>
               </tr>
               <tr>
-                <td>Green Onions</td>
-                <td>3 sliced</td>
+                <td>Cautions: {props.cautions.map(cautions => (
+              
+                cautions + ", "
+              
+              ))}</td>
               </tr>
             </tbody>
           </table>
+            <a href={props.href} className="btn waves-effect waves-light pp-recipe-rm" target="_blank">Read more</a>
         </div>
-        <div className="col s12 m6">
-          <div className="card-panel white pp-recipe-card">
-            <span className="card-title pp-recipe-header">Recipe</span>
-            <span className="black-text pp-recipe">Preheat an oven to 425 degrees F (220 degrees C).
-Place the asparagus into a mixing bowl, and drizzle with the olive oil. Toss to coat the spears, then sprinkle with Parmesan cheese, garlic, salt, and pepper. Arrange the asparagus onto a baking sheet in a single layer.
-Bake in the preheated oven until just tender, 12 to 15 minutes depending on thickness. Sprinkle with lemon juice just before serving.
-            </span>
-            <div className="btn waves-effect waves-light pp-recipe-rm">Read More</div>
-          </div>
-        </div>
-
       </div>
     </div>
   )
 }
 
-export default FoodDetails;
+export default FoodDetails
