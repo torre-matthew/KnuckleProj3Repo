@@ -19,7 +19,9 @@ class ListOfingredients extends Component {
     totalTime:[],
     healthLabel:[],
     dietLabel:[],
-    youtubeSearchName:[]
+    youtubeSearchName:[],
+    cautions:[],
+    href:[]
   }
 
   handleText = i => e => {
@@ -68,7 +70,9 @@ class ListOfingredients extends Component {
       totalTime:[],
       healthLabel:[],
       dietLabel:[],
-      youtubeSearchName:[]
+      youtubeSearchName:[],
+      cautions:[],
+      href:[]
     });
     let queryString = this.state.ingredients;
     API.search(queryString)
@@ -100,7 +104,9 @@ class ListOfingredients extends Component {
       totalTime:[],
       healthLabel:[],
       dietLabel:[],
-      youtubeSearchName:[]
+      youtubeSearchName:[],
+      cautions:[],
+      href:[]
     });
     API.searchByID(recipeID)
       .then(res => {
@@ -110,8 +116,20 @@ class ListOfingredients extends Component {
           calories:res.data[0].calories,
           totalTime:res.data[0].totalTime,
           healthLabel:res.data[0].healthLabels,
-          dietLabel:res.data[0].dietLabels
+          dietLabel:res.data[0].dietLabels,
+          cautions:res.data[0].cautions,
+          href:res.data[0].url
         })
+        if(res.data[0].totalTime === 0){
+          this.setState({
+            totalTime:["Unknown"]
+          })
+        }
+        if(res.data[0].cautions === undefined){
+          this.setState({
+            cautions:["None"]
+          })
+        }
         console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
         console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
       })
@@ -180,6 +198,8 @@ class ListOfingredients extends Component {
             calories={this.state.calories}
             totalTime={this.state.totalTime}
             dietLabel={this.state.dietLabel}
+            cautions={this.state.cautions}
+            href={this.state.href}
           />
         ) : 
         ""}
