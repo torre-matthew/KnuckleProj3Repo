@@ -4,7 +4,7 @@ import "./style.css";
 import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 import Video from "../Video";
-import {RecipeIngredients, FoodDetails} from "../FoodDetails"
+import FoodDetails from "../FoodDetails"
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
@@ -105,7 +105,7 @@ class ListOfingredients extends Component {
     API.searchByID(recipeID)
       .then(res => {
         this.setState({
-          recipeIngredients:res.data[0].ingredients,
+          recipeIngredients:res.data[0].ingredientLines,
           youtubeSearchName:res.data[0].label,
           calories:res.data[0].calories,
           totalTime:res.data[0].totalTime,
@@ -172,17 +172,19 @@ class ListOfingredients extends Component {
             })}
           </FoodDisplay>
         )}
-        <FoodDetails
-          calories={this.state.calories}
-          totalTime={this.state.totalTime}
-          healthLabel={this.state.healthLabel}
-          dietLabel={this.state.dietLabel}
-        >
-        <RecipeIngredients
-          recipeIngredients={this.state.recipeIngredients}
-        />
-        </FoodDetails>
-        )}
+        {this.state.showRecipeIngredients ? (
+          <FoodDetails
+            healthLabels={this.state.healthLabel}
+            listOfIngredients={this.state.recipeIngredients}
+            name={this.state.youtubeSearchName}
+            calories={this.state.calories}
+            totalTime={this.state.totalTime}
+            dietLabel={this.state.dietLabel}
+          />
+        ) : 
+        ""}
+        
+        
     </div>
     )
   }
