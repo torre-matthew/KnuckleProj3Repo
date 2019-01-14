@@ -128,6 +128,7 @@ showRecipe = (recipeID) => {
       </div>
       {this.state.showRecipeIngredients ? 
         (<FoodDetails
+          name={this.state.youtubeSearchName}
           listOfIngredients={this.state.recipeIngredients}
           healthLabels={this.state.healthLabels}
         />) : 
