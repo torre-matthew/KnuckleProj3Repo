@@ -11,7 +11,7 @@ function FoodDetails(props) {
         </div>
       </div>
       <div className="row">
-        <div className="col s12 m6">
+        <div className="col s12 m4">
           <table>
             <thead>
               <tr>
@@ -27,21 +27,51 @@ function FoodDetails(props) {
             </tbody>
           </table>
         </div>
-        <div className="col s12 m6">
-          <div className="card-panel white pp-recipe-card">
-            <span className="card-title pp-recipe-header">Health Labels</span>
-            <table>
+        <div className="col s12 m4">
+          <table>
+            <thead>
+              <tr>
+                <th>Health and Diet Labels</th>
+              </tr>
+            </thead>
             <tbody>
             {props.healthLabels.map(healthLabels => (
               <tr>
                 <td>{healthLabels}</td>
               </tr>
-              ))}
+            ))}
+            {props.dietLabel.map(dietLabels => (
+              <tr>
+                <td>{dietLabels}</td>
+              </tr>
+            ))}
             </tbody>
           </table>
-            <div className="btn waves-effect waves-light pp-recipe-rm">Read More</div>
-          </div>
-
+        </div>
+        <div className="col s12 m4">
+          <table>
+            <thead>
+              <tr>
+                <th>Miscellaneous</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Calories: {props.calories}</td>
+              </tr>
+              <tr>
+                <td>Cook Time: {props.totalTime} Minutes</td>
+              </tr>
+              <tr>
+                <td>Cautions: {props.cautions.map(cautions => (
+              
+                cautions + ", "
+              
+              ))}</td>
+              </tr>
+            </tbody>
+          </table>
+            <a href={props.href} className="btn waves-effect waves-light pp-recipe-rm" target="_blank">Read more</a>
         </div>
       </div>
     </div>
