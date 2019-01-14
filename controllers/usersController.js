@@ -69,5 +69,5 @@ module.exports = {
     associateSavedRecipesToUser: associateSavedRecipesToUser,
     createUser: createUser,
     getAllUsers: getAllUsers, 
-    getUser: getUser
+    getUser: getUser,
 };
