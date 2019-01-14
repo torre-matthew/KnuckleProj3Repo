@@ -45,7 +45,8 @@ export default {
 //Get details of a saved recipe from the db by objID
 // On the front-end just pass this method an objID like this... PPAPI.getSavedRecipeDetails(objID)
     getSavedRecipeDetails: getSavedRecipeDetails,
-    
+
+// Associate saved recipe to a user based on that users email address and saved recipeID
 // On the front-end just pass this method an objID like this... PPAPI.associateSavedRecipeToUser(email, recipeID)
     associateSavedRecipeToUser: associateRecipeToUser
   };
