@@ -43,11 +43,6 @@ import result_icon4 from "./result_icon4.png";
    }
  }
 
-export function Pop(button){
-  let recipeURI = button.getAttribute("data-recipeID");
-  console.log(recipeURI);
-}
-
 //This is a functional component that displays a card for each recipe that we get back from Edamam.
 //It only displays these cards if the state(renderComponent) from our ingredients component is passed
 //as true.
