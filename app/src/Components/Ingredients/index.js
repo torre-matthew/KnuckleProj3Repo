@@ -113,7 +113,7 @@ class ListOfingredients extends Component {
               <FoodDisplayCard
                 key={recipe.recipe.label}
                 name={recipe.recipe.label}
-                href={recipe.recipe.href}
+                link={recipe.recipe.shareAs}
                 image={recipe.recipe.image}
                 renderComponent={this.state.showComponent}
               />

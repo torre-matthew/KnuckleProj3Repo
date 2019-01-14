@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./style.css";
-import resultImage1 from "./result1.jpg";
-import resultImage2 from "./result2.jpg";
-import resultImage3 from "./result3.jpg";
-import resultImage4 from "./result4.jpg";
 import result_icon1 from "./result_icon1.png";
 import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
+import API from "../../utils/API";
+import recipe from "../Ingredients";
+
+let iconArray = [result_icon1, result_icon2, result_icon3, result_icon4];
+let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
 
 
  class SaveFavorite extends Component {
@@ -22,6 +23,33 @@ import result_icon4 from "./result_icon4.png";
      this.setState({
        status: !this.state.status
      })
+     console.log(this.state.status); // this is consoling true/false when heart is clicked
+     let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
+
+     let targetName = target.getAttribute("data-name");
+
+     let targetImage = document.getElementById("recipeImage");
+     
+     let targetImageSrc = targetImage.getAttribute("src");
+
+     let targetLink = document.getElementById("recipeLink");
+
+     let targetLinkSrc = targetLink.getAttribute("href");
+
+     if (this.state.status === false) {
+       console.log("saving");
+       API.saveRecipe({
+        name: targetName,
+        image: targetImageSrc,
+        recipeID: targetLinkSrc
+       })
+       console.log(recipe);
+       console.log(target.getAttribute("data-name"));
+       console.log(targetImageSrc);
+       console.log(targetLinkSrc);
+     } else 
+      console.log("not saving");
+
    }
    render() {
      return (
@@ -33,9 +61,9 @@ import result_icon4 from "./result_icon4.png";
  class SaveFavoriteChild extends React.Component {
    render() {
      return (
-       <span className="pp-sm-favme">
+       <span id="favorite" className="pp-sm-favme">
        <i className={ this.props.className }
-       onClick={ this.props.toggleClassName }
+           onClick={this.props.toggleClassName}
        >
        { this.props.children }
          </i></span>
@@ -50,19 +78,20 @@ export function FoodDisplayCard(props){
   let renderComponent = props.renderComponent;
   if(renderComponent){
     return(
-      <div data-name={props.name} className="col s12 m6">
+      <div id="theRecipe" data-name={props.name} className="col s12 m6">
         <div className="pp-fd-results">
           <div className="pp-sm-fav-btn">
             <SaveFavorite />
           </div>
           <div>
-            <img src={props.image} alt="food"/>
+            <img id="recipeImage" src={props.image} alt="food"/>
           </div>
           <div className="pp-fd-icon">
-            <img src={result_icon1} alt="food icon" />
+            <img src={randomIcon} alt="food icon" />
           </div>
           <div className="pp-fd-link">
-            <a href={props.href}>See Recipe</a>
+            <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
+            <a data-scroll href="#getStarted" >See Recipe</a>
           </div>
         </div>
       </div>
