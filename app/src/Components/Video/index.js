@@ -17,7 +17,7 @@ class Video extends Component {
       selectedVideo: null
     };
 
-    this.searchYoutube('');
+    this.searchYoutube(props.youtubeSearchName);
   }
 
   videoSearch = _.debounce((term) => { this.searchYoutube(term) }, 300);
@@ -31,7 +31,7 @@ class Video extends Component {
     });
   }
 
-  render(props) {
+  render() {
     return (
         <div className="container">
           <SearchBar
