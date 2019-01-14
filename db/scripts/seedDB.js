@@ -7,26 +7,26 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pocketPantryDB"
 
 const savedRecipesSeeds = [
     {
-    "name": "Meatloaf",
-    "image": "https://images-gmi-pmc.edge-generalmills.com/3e0ded09-f8a2-45b6-aff7-e08ab138ed84.jpg",
-    "recipeID": "123456789996"
+    "name": "Pandan Wrapped Roast Pork",
+    "image": "https://www.edamam.com/web-img/ae4/ae4608a482557f6e8c33881d8436a5db.jpg",
+    "recipeID": "5e0a0380fcefe4cd472edb02cadd4dd7"
     },
 
     {
-    "name": "Panko Chicken Parmesan",
-    "image": "https://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201404-xl-panko-chicken-parmesan.jpg?itok=a2KJsevW",
-    "recipeID": "123456789999"
+    "name": "Chicken Piccata",
+    "image": "https://www.edamam.com/web-img/cc4/cc489abcab3838196f98dc6b85079f26.jpg",
+    "recipeID": "963f621a557c15bd094b0699ad6c717f"
     },
     {
-    "name": "Bologna Sandwich",
-    "image": "https://images-gmi-pmc.edge-generalmills.com/3e0ded09-f8a2-45b6-aff7-e08ab138ed84.jpg",
-    "recipeID": "123456789998"
+    "name": "Grilled Smoked Bologna With Yellow Mustard Slaw recipes",
+    "image": "https://www.edamam.com/web-img/c84/c84cfb0a5dfa2e407b384a8f2246d2cb",
+    "recipeID": "5b2a83218be4afc87a4bbe71c3307835"
     },
 
     {
-    "name": "Mixed Green Chilli Bowl",
-    "image": "https://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201404-xl-panko-chicken-parmesan.jpg?itok=a2KJsevW",
-    "recipeID": "9999999997"
+    "name": "Fried Duck Eggs With Blood Sausage Recipe",
+    "image": "https://www.edamam.com/web-img/d66/d66fd991ca7d35a673bae3857d2a8a4a.jpg",
+    "recipeID": "80f4daac407ec425390829543ae6ce57"
     },
 ];
 
@@ -42,6 +42,12 @@ const userSeeds = [
     "googleId": "105336623638150383762",
     "imageUrl": "https://avatars2.githubusercontent.com/u/40550171?s=460&v=4",
     "email": "bshaw@gmail.com"
+    },
+    {
+    "name": "Torre Matthew",
+    "googleId": "103021467426357737305",
+    "imageUrl": "https://lh6.googleusercontent.com/-Yj61w9oQns8/AAAAAAAAAAI/AAAAAAAAAKs/OJTLJO1YiKs/s96-c/photo.jpg",
+    "email": "torre.matthew@gmail.com"
     },
 
 ];
@@ -77,11 +83,11 @@ let seedUserData = () => {
 let associateSavedRecipesToUser = () => {
     let recipeArr = [];
     //Associate Associaate the meatloaf dish to Quy's user.
-    db.SavedRecipes.find({"name": "Meatloaf"})
+    db.SavedRecipes.find({"name": "Fried Duck Eggs With Blood Sausage Recipe"})
     .then(data => {
     //Update Quy's record to include a new saved recipe
         console.log(data[0]._id);
-        db.Users.findOneAndUpdate({"googleId": "105336623638150383761"}, {$push: {savedRecipes: data[0]._id,}})
+        db.Users.findOneAndUpdate({"googleId": "103021467426357737305"}, {$push: {savedRecipes: data[0]._id,}})
         .then(updatedUserRecord => {
             // console.log(updatedUserRecord);
             process.exit(0);

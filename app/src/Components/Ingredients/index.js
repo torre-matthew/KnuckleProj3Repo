@@ -141,7 +141,6 @@ class ListOfingredients extends Component {
             <Button waves='light' className="pp-red pp-foh-search" onClick={this.searchEdamam}>Search</Button>
             <button className="btn-floating pp-red pp-foh-add" onClick={this.addIngredient}><i className="material-icons">add</i></button>
           </div>
-          <script></script>
         </div>
         {!this.state.recipes.length ? (
           <div className="pp-fd">

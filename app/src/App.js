@@ -29,7 +29,6 @@ class App extends Component {
         <Carousel />
         <FoodOnHand />
         <SavedMeals />
-        <Video />
         <Footer />
       </div>
     );
