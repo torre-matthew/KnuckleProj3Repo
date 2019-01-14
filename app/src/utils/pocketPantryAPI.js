@@ -24,6 +24,13 @@ let createUser = (name, googleId, imageUrl, email) => {
   });
 }
 
+let associateRecipeToUser = (email, recipeID) => {
+  return axios.put('/api/user/savingrecipe', {
+      email: email,
+      recipeID: recipeID
+  });
+}
+
 export default {
 //Get Saved Recipes for a user based on googleId:
 // On the front-end just pass this method a googleId like this...PPAPI.getUsersSavedRecipes(googleId)
@@ -37,5 +44,8 @@ export default {
 
 //Get details of a saved recipe from the db by objID
 // On the front-end just pass this method an objID like this... PPAPI.getSavedRecipeDetails(objID)
-    getSavedRecipeDetails: getSavedRecipeDetails
+    getSavedRecipeDetails: getSavedRecipeDetails,
+    
+// On the front-end just pass this method an objID like this... PPAPI.associateSavedRecipeToUser(email, recipeID)
+    associateSavedRecipeToUser: associateRecipeToUser
   };

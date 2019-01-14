@@ -1,4 +1,5 @@
 const db = require("../db/models");
+const recipesController = require("../controllers/recipesController");
 
 
 // This function takes the googleId from the api get request and queries the db to look for the Users collection that
@@ -23,7 +24,7 @@ let findUsersSavedRecipes = (req, res) => {
 let associateSavedRecipesToUser = (req, res) => {
     db.SavedRecipes.find({"recipeID": req.body.recipeID})
     .then(data => {
-        db.Users.findOneAndUpdate({"googleId": req.body.googleID}, {$push: {savedRecipes: data[0]._id}})
+        db.Users.findOneAndUpdate({"email": req.body.email}, {$push: {savedRecipes: data[0]._id}})
         .then(updatedUserRecord => {
             res.json(updatedUserRecord);
         })
@@ -65,7 +66,7 @@ let getUser = (req, res) => {
 // Defining methods for the usersController
 module.exports = {
     usersSavedRecipes: findUsersSavedRecipes,
-    saveARecipe: associateSavedRecipesToUser,
+    associateSavedRecipesToUser: associateSavedRecipesToUser,
     createUser: createUser,
     getAllUsers: getAllUsers, 
     getUser: getUser
