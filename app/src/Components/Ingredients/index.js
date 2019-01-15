@@ -191,6 +191,7 @@ class ListOfingredients extends Component {
           </FoodDisplay>
         )}
         {this.state.showRecipeIngredients ? (
+          <div>
           <FoodDetails
             healthLabels={this.state.healthLabel}
             listOfIngredients={this.state.recipeIngredients}
@@ -201,7 +202,10 @@ class ListOfingredients extends Component {
             cautions={this.state.cautions}
             href={this.state.href}
           />
-        ) : 
+          <Video
+          youtubeSearchName={this.state.youtubeSearchName} 
+          />
+        </div>) : 
         ""}
         
         
