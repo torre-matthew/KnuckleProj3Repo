@@ -59,7 +59,7 @@ state = {
   healthLabels:[],
   dietLabel:[],
   cautions:[],
-  youtubeSearchName:[]
+  youtubeSearchName:''
   }
 
 componentDidMount() {
@@ -87,8 +87,6 @@ showRecipe = (recipeID) => {
   console.log(recipeID);
   this.setState({
     showRecipeIngredients:true,
-    recipeIngredients:[],
-    youtubeSearchName:[],
   });
   API.searchByID(recipeID)
     .then(res => {
@@ -136,16 +134,16 @@ showRecipe = (recipeID) => {
               <div className="pp-sm-fav-btn">
                 <SaveFavorite />
               </div>
-              <a href="#recipe-area"><img src={recipes.image} data-recipeID={recipes.recipeID} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
+              <a href="#saved-recipe-area"><img src={recipes.image} data-recipeID={recipes.recipeID} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
               <div className="pp-sm-recipe-fav-link">
-              <a href="">{recipes.name}</a>
+              <a href="#saved-recipe-area" onClick={() => this.showRecipe(recipes.recipeID)}>{recipes.name}</a>
               </div>
             </div>
           </div>
           ))}
         </div>       
       </div>
-      {this.state.showRecipeIngredients ? 
+      {this.state.showRecipeIngredients && this.state.youtubeSearchName !== '' ? 
         (<div>
         <FoodDetails
           healthLabels={this.state.healthLabels}

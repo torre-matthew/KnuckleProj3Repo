@@ -14,7 +14,7 @@ class SearchBarForm extends Component {
   }
 
   componentDidMount() {
-    this.setState({ term:this.props.youtubeSearchName},()=>{
+    this.setState({ term:this.props.youtubeSearchName + " recipe"},()=>{
       this.onInputChange(this.state.term);
     });
     
