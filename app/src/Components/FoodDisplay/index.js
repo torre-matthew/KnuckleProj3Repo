@@ -8,7 +8,6 @@ import result_icon1 from "./result_icon1.png";
 import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
-import Modal from "../Modal";
 
 
  class SaveFavorite extends Component {
@@ -81,23 +80,17 @@ export function FoodDisplayCard(props){
 //This is a functional component that acts as the container for the cards.
 export function FoodDisplay({props, children}) {
   return (
-    <div>
-      <div className="pp-fd">
-        <div className="container">
-          <div className="row">
-            <div className="col s12 center">
-              <h1>Here are some meals to consider</h1>
-            </div>
+    <div className="pp-fd">
+      <div className="container">
+        <div className="row">
+          <div className="col s12 center">
+            <h1>Here are some meals to consider</h1>
           </div>
-          <div className="row">
-            {children}
-          </div>
-        </div> 
-      </div>
-      <Modal show={props.status} handleClose={this.handleClick}>
-        <h4>Success!</h4>
-        <p>Your favorites have been updated.</p>
-      </Modal>
+        </div>
+        <div className="row">
+          {children}
+        </div>
+      </div> 
     </div>
   );
 }

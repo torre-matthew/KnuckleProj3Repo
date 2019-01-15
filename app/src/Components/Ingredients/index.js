@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 import Video from "../Video";
 import FoodDetails from "../FoodDetails"
+import Modal from "../Modal";
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
@@ -21,7 +22,8 @@ class ListOfingredients extends Component {
     dietLabel:[],
     youtubeSearchName:[],
     cautions:[],
-    href:[]
+    href:[],
+    status:false
   }
 
   handleText = i => e => {
@@ -50,6 +52,12 @@ class ListOfingredients extends Component {
     let ingredients = this.state.ingredients.concat([''])
     this.setState({
       ingredients
+    })
+  }
+
+  handleClose = () => {
+    this.setState({
+      status: !this.state.status
     })
   }
 
@@ -191,7 +199,6 @@ class ListOfingredients extends Component {
           </FoodDisplay>
         )}
         {this.state.showRecipeIngredients ? (
-          <div>
           <FoodDetails
             healthLabels={this.state.healthLabel}
             listOfIngredients={this.state.recipeIngredients}
@@ -202,13 +209,13 @@ class ListOfingredients extends Component {
             cautions={this.state.cautions}
             href={this.state.href}
           />
-          <Video
-          youtubeSearchName={this.state.youtubeSearchName} 
-          />
-        </div>) : 
+        ) : 
         ""}
         
-        
+      <Modal show={this.state.status} handleClose={this.handleClose.bind()}>
+        <h4>Success!</h4>
+        <p>Your favorites have been updated.</p>
+      </Modal>
     </div>
     )
   }

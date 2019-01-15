@@ -33,7 +33,7 @@ let deleteRecipeByID = (req, res) => {
 let deleteRecipeFromUserArray = (req, res) => {
     db.SavedRecipes.find({"recipeID": req.body.recipeID})
     .then(data => {
-        db.Users.findOneAndUpdate({"googleId": req.body.googleID}, {$pull: {savedRecipes: data[0]._id}})
+        db.Users.findOneAndUpdate({"email": req.body.email}, {$pull: {savedRecipes: data[0]._id}})
         .then(updatedUserRecord => {
             res.json(updatedUserRecord);
         })
