@@ -138,7 +138,7 @@ showRecipe = (recipeID) => {
               </div>
               <a href="#recipe-area"><img src={recipes.image} data-recipeID={recipes.recipeID} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
               <div className="pp-sm-recipe-fav-link">
-              <a href="">See Recipe</a>
+              <a href="">{recipes.name}</a>
               </div>
             </div>
           </div>
