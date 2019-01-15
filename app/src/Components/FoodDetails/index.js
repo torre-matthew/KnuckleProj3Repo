@@ -4,7 +4,7 @@ import "./style.css";
 
 function FoodDetails(props) {
   return(
-    <div id="recipe-area" className="container pp-food-details">
+    <div id="recipe-area saved-recipe-area" className="container pp-food-details">
       <div className="row">
         <div className="col s12">
           <h1 id="getStarted">Great! Let’s get started on a fabulous {props.name}!</h1>

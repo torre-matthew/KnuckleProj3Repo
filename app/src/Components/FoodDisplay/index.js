@@ -23,6 +23,7 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
      this.setState({
        status: !this.state.status
      })
+
      console.log(this.state.status); // this is consoling true/false when heart is clicked
      let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
 
@@ -48,7 +49,6 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
          .then (response => {
            PPAPI.associateSavedRecipeToUser (email, response.data.recipeID)
            console.log(email)
- 
          })
        console.log(recipe);
        console.log(target.getAttribute("data-name"));
@@ -100,7 +100,7 @@ export function FoodDisplayCard(props){
           <div id="recipeIdLink" className="pp-fd-link">
             <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
             
-            <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
+            <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>{props.name}</a>
             {/* props.buttonClick */}
           </div>
         </div>
