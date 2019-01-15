@@ -8,13 +8,15 @@ import result_icon1 from "./result_icon1.png";
 import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
+import Modal from "../Modal";
 
 
  class SaveFavorite extends Component {
    constructor(props) {
      super(props)
      this.state = {
-       status: false
+       status: false,
+       modal:"#modal1"
      }
      this.handleClick = this.handleClick.bind(this)
    }
@@ -25,7 +27,9 @@ import result_icon4 from "./result_icon4.png";
    }
    render() {
      return (
-       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick}></SaveFavoriteChild>
+       <div>
+       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick} href={this.state.modal}></SaveFavoriteChild>
+      </div>
      )
    }
  }
@@ -36,6 +40,7 @@ import result_icon4 from "./result_icon4.png";
        <span className="pp-sm-favme">
        <i className={ this.props.className }
        onClick={ this.props.toggleClassName }
+       href={this.props.href}
        >
        { this.props.children }
          </i></span>
@@ -74,19 +79,25 @@ export function FoodDisplayCard(props){
 }
 
 //This is a functional component that acts as the container for the cards.
-export function FoodDisplay({children}) {
+export function FoodDisplay({props, children}) {
   return (
-    <div className="pp-fd">
-      <div className="container">
-        <div className="row">
-          <div className="col s12 center">
-            <h1>Here are some meals to consider</h1>
+    <div>
+      <div className="pp-fd">
+        <div className="container">
+          <div className="row">
+            <div className="col s12 center">
+              <h1>Here are some meals to consider</h1>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          {children}
-        </div>
-      </div> 
+          <div className="row">
+            {children}
+          </div>
+        </div> 
+      </div>
+      <Modal show={props.status} handleClose={this.handleClick}>
+        <h4>Success!</h4>
+        <p>Your favorites have been updated.</p>
+      </Modal>
     </div>
   );
 }

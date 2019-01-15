@@ -8,6 +8,4 @@ window.onload = function() {
   } else {
     document.getElementById("pp-all-meals").style.display = "none";
   }
-
-
 } // window.onload
