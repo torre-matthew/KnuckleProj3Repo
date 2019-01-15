@@ -104,9 +104,7 @@ class ListOfingredients extends Component {
       totalTime:[],
       healthLabel:[],
       dietLabel:[],
-      youtubeSearchName:[],
-      cautions:[],
-      href:[]
+      youtubeSearchName:''
     });
     API.searchByID(recipeID)
       .then(res => {
@@ -138,6 +136,7 @@ class ListOfingredients extends Component {
 
   render() {
     return (
+      
       <div>
         <div className="pp-foh-list row container">
           <div className="col s12 m6">
@@ -190,7 +189,7 @@ class ListOfingredients extends Component {
             })}
           </FoodDisplay>
         )}
-        {this.state.showRecipeIngredients ? (
+        {this.state.showRecipeIngredients && this.state.youtubeSearchName !== '' ? (
           <div>
           <FoodDetails
             healthLabels={this.state.healthLabel}
