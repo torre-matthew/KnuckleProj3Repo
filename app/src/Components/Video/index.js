@@ -45,7 +45,7 @@ class Video extends Component {
           <SearchBarForm
             onChange={(searchTerm) => {this.videoSearch(searchTerm)}} 
             youtubeSearchName={this.props.youtubeSearchName} />
-          <VideoPlayer video={this.state.selectedVideo}  />
+          <VideoPlayer video={this.state.selectedVideo} />
           <VideoList
             onVideoSelect={(selectedVideo) => {this.setState({selectedVideo})}}
             videos={this.state.videos}
