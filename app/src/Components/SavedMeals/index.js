@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import FoodDetails from "../FoodDetails";
+import Video from "../Video";
 import "./style.css";
 
 class SaveFavorite extends Component {
@@ -127,11 +128,16 @@ showRecipe = (recipeID) => {
         </div>       
       </div>
       {this.state.showRecipeIngredients ? 
-        (<FoodDetails
+        (<div>
+        <FoodDetails
           name={this.state.youtubeSearchName}
           listOfIngredients={this.state.recipeIngredients}
           healthLabels={this.state.healthLabels}
-        />) : 
+        />
+        <Video
+        youtubeSearchName={this.state.youtubeSearchName} 
+        />
+        </div>) : 
         ""}
       </div>
       

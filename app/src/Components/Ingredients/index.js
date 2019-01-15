@@ -100,7 +100,7 @@ class ListOfingredients extends Component {
       totalTime:[],
       healthLabel:[],
       dietLabel:[],
-      youtubeSearchName:[]
+      youtubeSearchName:''
     });
     API.searchByID(recipeID)
       .then(res => {
@@ -173,7 +173,8 @@ class ListOfingredients extends Component {
             })}
           </FoodDisplay>
         )}
-        {this.state.showRecipeIngredients ? (
+        {this.state.showRecipeIngredients && this.state.youtubeSearchName !== '' ? (
+          <div>
           <FoodDetails
             healthLabels={this.state.healthLabel}
             listOfIngredients={this.state.recipeIngredients}
@@ -182,7 +183,10 @@ class ListOfingredients extends Component {
             totalTime={this.state.totalTime}
             dietLabel={this.state.dietLabel}
           />
-        ) : 
+          <Video
+          youtubeSearchName={this.state.youtubeSearchName} 
+          />
+        </div>) : 
         ""}
         
         
