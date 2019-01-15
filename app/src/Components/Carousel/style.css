@@ -3,7 +3,7 @@
 }
 
 .carousel.carousel-slider {
-  max-height: 640px;
+  max-height: 500px;
 }
 
 .carousel .slide:first-of-type::before {
