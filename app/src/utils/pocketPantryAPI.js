@@ -39,6 +39,15 @@ let associateSavedRecipeToUser = (email, recipeID) => {
   });
 }
 
+let deleteRecipeFromUserRecord = (email, recipeID) => {
+  return axios.delete('/api/savedRecipe/delete-user-recipe', {
+      email: email,
+      recipeID: recipeID
+  });
+}
+
+
+
 export default {
 //Get Saved Recipes for a user based on googleId:
 // On the front-end just pass this method a googleId like this...PPAPI.getUsersSavedRecipes(googleId)
@@ -59,5 +68,8 @@ export default {
     associateSavedRecipeToUser: associateSavedRecipeToUser,
 
 // On the front-end just pass this method an objID like this... PPAPI.saveRecipeToDB(recipeName, recipeImage, recipeID)
-    saveRecipeToDB: saveRecipeToDB
+    saveRecipeToDB: saveRecipeToDB,
+
+// On the front-end just pass this method an objID like this... PPAPI.deleteRecipeFromUserRecord(email, recipeID)
+    deleteRecipeFromUserRecord: deleteRecipeFromUserRecord
   };
