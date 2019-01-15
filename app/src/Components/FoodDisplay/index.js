@@ -4,7 +4,7 @@ import result_icon1 from "./result_icon1.png";
 import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
-import API from "../../utils/API";
+import PPAPI from "../../utils/pocketPantryAPI";
 import recipe from "../Ingredients";
 
 let iconArray = [result_icon1, result_icon2, result_icon3, result_icon4];
@@ -32,21 +32,27 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
      
      let targetImageSrc = targetImage.getAttribute("src");
 
-     let targetLink = document.getElementById("recipeLink");
+     let targetId = document.getElementById("recipeIdLink");
 
-     let targetLinkSrc = targetLink.getAttribute("href");
+     let targetIdFind = targetId.childNodes[1];
+
+     let targetIdLink = targetIdFind.getAttribute("data-recipeid").split("_");
+
+     let email = sessionStorage.getItem("em");
+
+     console.log(targetIdLink[1]);
 
      if (this.state.status === false) {
        console.log("saving");
-       API.saveRecipe({
-        name: targetName,
-        image: targetImageSrc,
-        recipeID: targetLinkSrc
-       })
+       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink)
+         .then (response => {
+           PPAPI.associateSavedRecipeToUser (email, response.data.recipeID)
+           console.log(email)
+ 
+         })
        console.log(recipe);
        console.log(target.getAttribute("data-name"));
        console.log(targetImageSrc);
-       console.log(targetLinkSrc);
      } else 
       console.log("not saving");
 
@@ -91,7 +97,7 @@ export function FoodDisplayCard(props){
           <div className="pp-fd-icon">
             <img src={randomIcon} alt="food icon" />
           </div>
-          <div className="pp-fd-link">
+          <div id="recipeIdLink" className="pp-fd-link">
             <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
             
             <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
