@@ -7,7 +7,7 @@ function FoodDetails(props) {
     <div id="recipe-area" className="container pp-food-details">
       <div className="row">
         <div className="col s12">
-          <h1>Great! Let’s get started on a fabulous {props.name}!</h1>
+          <h1 id="getStarted">Great! Let’s get started on a fabulous {props.name}!</h1>
         </div>
       </div>
       <div className="row">
