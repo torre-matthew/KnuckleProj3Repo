@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 
-import Ingredients from "../Ingredients";
+
 class SearchBarForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { term: '' };
+   this.state = { term: " " };
   }
 
   onInputChange(term) {
     this.setState({ term:term});
     this.props.onChange(term);
+  }
+
+  componentDidMount() {
+    this.setState({ term:this.props.youtubeSearchName},()=>{
+      this.onInputChange(this.state.term);
+    });
+    
   }
 
   render() {
