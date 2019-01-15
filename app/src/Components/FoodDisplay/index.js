@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "./style.css";
-import resultImage1 from "./result1.jpg";
-import resultImage2 from "./result2.jpg";
-import resultImage3 from "./result3.jpg";
-import resultImage4 from "./result4.jpg";
 import result_icon1 from "./result_icon1.png";
 import result_icon2 from "./result_icon2.png";
 import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
+import PPAPI from "../../utils/pocketPantryAPI";
+import recipe from "../Ingredients";
+
+let iconArray = [result_icon1, result_icon2, result_icon3, result_icon4];
+let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
 
 
  class SaveFavorite extends Component {
@@ -23,6 +24,39 @@ import result_icon4 from "./result_icon4.png";
      this.setState({
        status: !this.state.status
      })
+     console.log(this.state.status); // this is consoling true/false when heart is clicked
+     let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
+
+     let targetName = target.getAttribute("data-name");
+
+     let targetImage = document.getElementById("recipeImage");
+     
+     let targetImageSrc = targetImage.getAttribute("src");
+
+     let targetId = document.getElementById("recipeIdLink");
+
+     let targetIdFind = targetId.childNodes[1];
+
+     let targetIdLink = targetIdFind.getAttribute("data-recipeid").split("_");
+
+     let email = sessionStorage.getItem("em");
+
+     console.log(targetIdLink[1]);
+
+     if (this.state.status === false) {
+       console.log("saving");
+       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink)
+         .then (response => {
+           PPAPI.associateSavedRecipeToUser (email, response.data.recipeID)
+           console.log(email)
+ 
+         })
+       console.log(recipe);
+       console.log(target.getAttribute("data-name"));
+       console.log(targetImageSrc);
+     } else 
+      console.log("not saving");
+
    }
    render() {
      return (
@@ -36,10 +70,9 @@ import result_icon4 from "./result_icon4.png";
  class SaveFavoriteChild extends React.Component {
    render() {
      return (
-       <span className="pp-sm-favme">
+       <span id="favorite" className="pp-sm-favme">
        <i className={ this.props.className }
-       onClick={ this.props.toggleClassName }
-       href={this.props.href}
+           onClick={this.props.toggleClassName}
        >
        { this.props.children }
          </i></span>
@@ -56,19 +89,21 @@ export function FoodDisplayCard(props){
 //and this function is run given the recipeID as a parameter. 
   if(renderComponent){
     return(
-      <div data-name={props.name} className="col s12 m6">
+      <div id="theRecipe" data-name={props.name} className="col s12 m6">
         <div className="pp-fd-results">
           <div className="pp-sm-fav-btn">
             <SaveFavorite />
           </div>
           <div>
-            <img src={props.image} alt="food"/>
+            <img id="recipeImage" src={props.image} alt="food"/>
           </div>
           <div className="pp-fd-icon">
-            <img src={result_icon1} alt="food icon" />
+            <img src={randomIcon} alt="food icon" />
           </div>
-          <div className="pp-fd-link">
-            <a href={props.href} data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
+          <div id="recipeIdLink" className="pp-fd-link">
+            <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
+            
+            <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
             {/* props.buttonClick */}
           </div>
         </div>

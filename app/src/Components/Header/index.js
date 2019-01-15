@@ -12,20 +12,20 @@ var yourImage = sessionStorage.getItem("img");
 
 function Header() {
   return (
-   <div>
+   <div className="navbar-fixed">
     <nav className="navbar navbar-expand-sm">
       <div className="nav-wrapper container">
-          <a href="#!" className="brand-logo"><img src={logo} className="App-logo" alt="logo" /> </a>
-        <ul className="right">
-            <li className="google-modal">
+          <a href="#!" className="brand-logo"><img id="logo" src={logo} className="App-logo" alt="logo" /> </a>
+        <ul>
+            <li className="google-modal right">
             <Modal
               className="pp-sign-in"
               header='Login with your Google ID'
               bottomSheet
-              trigger={<Button><img src={yourImage} alt="" /></Button>}>
+              trigger={<Button className="fas"><img src={yourImage} alt="" /></Button>}>
               <Welcome />
             </Modal></li>
-            <li className="pp-sidenav"><Sidenav /></li>
+            <li className="pp-sidenav left"><Sidenav /></li>
         </ul>
           
       </div> 

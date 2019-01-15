@@ -2,6 +2,10 @@
   height: inherit;
 }
 
+.carousel.carousel-slider {
+  max-height: 640px;
+}
+
 .carousel .slide:first-of-type::before {
   content: "Welcome to Pocket Pantry";
   font-size: 2.27rem;
