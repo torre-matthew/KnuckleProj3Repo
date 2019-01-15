@@ -54,7 +54,11 @@ state = {
   yourName:"",
   showRecipeIngredients: false,
   recipeIngredients:[],
+  calories:[],
+  totalTime:[],
   healthLabels:[],
+  dietLabel:[],
+  cautions:[],
   youtubeSearchName:[]
   }
 
@@ -84,15 +88,29 @@ showRecipe = (recipeID) => {
   this.setState({
     showRecipeIngredients:true,
     recipeIngredients:[],
-    youtubeSearchName:[]
+    youtubeSearchName:[],
   });
   API.searchByID(recipeID)
     .then(res => {
       this.setState({
         recipeIngredients:res.data[0].ingredientLines,
-        healthLabels:res.data[0].healthLabels,
+        calories:res.data[0].calories,
+        totalTime:res.data[0].totalTime,
+        healthLabel:res.data[0].healthLabels,
+        dietLabel:res.data[0].dietLabels,
+        cautions:res.data[0].cautions,
         youtubeSearchName:res.data[0].label
       })
+      if(res.data[0].totalTime === 0){
+        this.setState({
+          totalTime:["Unknown"]
+        })
+      }
+      if(res.data[0].cautions === undefined){
+        this.setState({
+          cautions:["None"]
+        })
+      }
       console.log(res);
       console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
       console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
@@ -130,9 +148,13 @@ showRecipe = (recipeID) => {
       {this.state.showRecipeIngredients ? 
         (<div>
         <FoodDetails
-          name={this.state.youtubeSearchName}
-          listOfIngredients={this.state.recipeIngredients}
           healthLabels={this.state.healthLabels}
+          listOfIngredients={this.state.recipeIngredients}
+          name={this.state.youtubeSearchName}
+          calories={this.state.calories}
+          totalTime={this.state.totalTime}
+          dietLabel={this.state.dietLabel}
+          cautions={this.state.cautions}
         />
         <Video
         youtubeSearchName={this.state.youtubeSearchName} 
