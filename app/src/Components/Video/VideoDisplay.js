@@ -9,7 +9,7 @@ const VideoPlayer = ({ video }) => {
 
   return (
     <div  className="pp-foh-list row container">
-    <div className="video-detail col s12 m8 l8">
+    <div className="video-detail col-md-8">
       <div className="embed-responsive embed-responsive-16by9">
       
         <iframe className="embed-responsive-item" src={url}></iframe>
