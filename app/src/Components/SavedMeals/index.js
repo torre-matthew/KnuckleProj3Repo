@@ -3,12 +3,14 @@ import API from "../../utils/API";
 import FoodDetails from "../FoodDetails";
 import Video from "../Video";
 import "./style.css";
+import PPAPI from "../../utils/pocketPantryAPI";
+import SideNav from "react-materialize/lib/SideNav";
 
 class SaveFavorite extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: false
+      status: false,
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -16,7 +18,23 @@ class SaveFavorite extends Component {
     this.setState({
       status: !this.state.status
     })
+
+    console.log(this.state.status); // this is consoling true/false when heart is clicked
+    let targetId = document.getElementById("recipeIdElem");
+    let id = targetId.getAttribute("data-recipeid-delete")
+    let email = sessionStorage.getItem("em");
+
+    if (this.state.status === false) {
+      PPAPI.deleteRecipeFromUserRecord(email, id)
+        .then (response => {
+        })
+        .catch(err => {
+          console.error(err);   
+      });
+    } else 
+     console.log("not deleting");  
   }
+
   render() {
     return (
       <SaveFavoriteChild 
@@ -25,6 +43,8 @@ class SaveFavorite extends Component {
       />
     )
   }
+
+
 }
 
 class SaveFavoriteChild extends React.Component {
@@ -54,8 +74,12 @@ state = {
   yourName:"",
   showRecipeIngredients: false,
   recipeIngredients:[],
+  calories:[],
+  totalTime:[],
   healthLabels:[],
-  youtubeSearchName:[]
+  dietLabel:[],
+  cautions:[],
+  youtubeSearchName:''
   }
 
 componentDidMount() {
@@ -83,16 +107,28 @@ showRecipe = (recipeID) => {
   console.log(recipeID);
   this.setState({
     showRecipeIngredients:true,
-    recipeIngredients:[],
-    youtubeSearchName:[]
   });
   API.searchByID(recipeID)
     .then(res => {
       this.setState({
         recipeIngredients:res.data[0].ingredientLines,
-        healthLabels:res.data[0].healthLabels,
+        calories:res.data[0].calories,
+        totalTime:res.data[0].totalTime,
+        healthLabel:res.data[0].healthLabels,
+        dietLabel:res.data[0].dietLabels,
+        cautions:res.data[0].cautions,
         youtubeSearchName:res.data[0].label
       })
+      if(res.data[0].totalTime === 0){
+        this.setState({
+          totalTime:["Unknown"]
+        })
+      }
+      if(res.data[0].cautions === undefined){
+        this.setState({
+          cautions:["None"]
+        })
+      }
       console.log(res);
       console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
       console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
@@ -118,21 +154,25 @@ showRecipe = (recipeID) => {
               <div className="pp-sm-fav-btn">
                 <SaveFavorite />
               </div>
-              <a href="#recipe-area"><img src={recipes.image} data-recipeID={recipes.recipeID} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
+              <a href="#saved-recipe-area"><img id="recipeIdElem" src={recipes.image} data-recipeid-delete={recipes._id} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
               <div className="pp-sm-recipe-fav-link">
-              <a href="">See Recipe</a>
+              <a href="#saved-recipe-area" onClick={() => this.showRecipe(recipes.recipeID)}>{recipes.name}</a>
               </div>
             </div>
           </div>
           ))}
         </div>       
       </div>
-      {this.state.showRecipeIngredients ? 
+      {this.state.showRecipeIngredients && this.state.youtubeSearchName !== '' ? 
         (<div>
         <FoodDetails
-          name={this.state.youtubeSearchName}
-          listOfIngredients={this.state.recipeIngredients}
           healthLabels={this.state.healthLabels}
+          listOfIngredients={this.state.recipeIngredients}
+          name={this.state.youtubeSearchName}
+          calories={this.state.calories}
+          totalTime={this.state.totalTime}
+          dietLabel={this.state.dietLabel}
+          cautions={this.state.cautions}
         />
         <Video
         youtubeSearchName={this.state.youtubeSearchName} 

@@ -1,22 +1,15 @@
-.nav-bar{
-    border: 1px solid red;
-    text-align: center;
-    background: red;
-  }
-  
-  #site-title {
-    color: white;
-    font-size: 20px;
-    padding: 10px;
-  }
-  
+
   .search-bar {
     margin: 30px;
     text-align: center;
+    box-shadow: 7px 7px 7px 7px #ff4301;
+    
   }
   
   .search-bar input {
     width: 75%;
+    border-bottom: 1px solid #ff4301;
+    box-shadow: 0 1px 0 0 #ff4301;
   }
   
   .video-item img {
