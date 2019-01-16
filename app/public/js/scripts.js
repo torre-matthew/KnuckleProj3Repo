@@ -20,7 +20,7 @@ window.onload = function() {
     
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
      
-      logo.style.width = "90px";
+      logo.style.maxWidth = "90px";
       logo.style.filter = "drop-shadow(0px 0px 10px #ff4301)";
 
       if (x === 1) {
@@ -43,7 +43,7 @@ window.onload = function() {
       }
      
     } else {
-      logo.style.width = "200px";
+      logo.style.maxWidth = "200px";
       logo.style.filter = "drop-shadow(0px 0px 10px rgba(0,0,0,.7))";
       x = 1;
     }
