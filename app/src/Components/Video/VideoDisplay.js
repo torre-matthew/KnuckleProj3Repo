@@ -8,7 +8,6 @@ const VideoPlayer = ({ video }) => {
   const url = `https://youtube.com/embed/${videoId}`;
 
   return (
-    <div  className="pp-foh-list row container">
     <div className="video-detail col-md-8">
       <div className="embed-responsive embed-responsive-16by9">
       
@@ -19,7 +18,7 @@ const VideoPlayer = ({ video }) => {
         <div>{video.snippet.description}</div>
       </div>
     </div>
-    </div>
+  
   );
 }
 
