@@ -39,10 +39,10 @@ let associateSavedRecipeToUser = (email, recipeID) => {
   });
 }
 
-let deleteRecipeFromUserRecord = (email, recipeID) => {
-  return axios.delete('/api/savedRecipe/delete-user-recipe', {
+let deleteRecipeFromUserRecord = (email, id) => {
+  return axios.put('/api/savedRecipe/delete-user-recipe', {
       email: email,
-      recipeID: recipeID
+      id: id
   });
 }
 

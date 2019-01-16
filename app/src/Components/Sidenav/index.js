@@ -5,16 +5,19 @@ import Button from "react-materialize/lib/Button";
 import "./style.css";
 
 class Sidenav extends React.Component {
-  state = {
-    yourName: "",
-    yourEmail: "",
-    yourImage: "",
-    savedRecipes: [
-      {
-        name: "You have no saved recipes"
-      }
-    ]
-  }
+  constructor(props){
+    super(props)
+    this.state = {
+      yourName: "",
+      yourEmail: "",
+      yourImage: "",
+      savedRecipes: [
+        {
+          name: "You have no saved recipes"
+        }
+      ]
+    }
+}
 
 componentDidMount() {
   this.displayNameOrGuest();
@@ -77,7 +80,7 @@ render() {
       <SideNavItem className="no-hover" subheader>Saved Recipes</SideNavItem>
   <SideNavItem divider />
     {this.state.savedRecipes.map(recipes => (
-      <SideNavItem waves href="" key={recipes._id}>{recipes.name}</SideNavItem>
+      <SideNavItem waves href="#pp-all-meals" key={recipes._id}>{recipes.name}</SideNavItem>
     ))}
 </SideNav>
   )
