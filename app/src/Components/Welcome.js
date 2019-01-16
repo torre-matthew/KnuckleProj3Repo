@@ -20,6 +20,7 @@ let checkIfUserAlreadyExistsInDB = (response) => {
             sessionStorage.setItem("un", response.profileObj.name);
             sessionStorage.setItem("em", response.profileObj.email);
             sessionStorage.setItem("img", response.profileObj.imageUrl);
+            sessionStorage.setItem("gid", response.profileObj.googleId);
             getSavedRecipesFromDB(response.profileObj.googleId);
         }  
         else {
@@ -29,6 +30,7 @@ let checkIfUserAlreadyExistsInDB = (response) => {
                 sessionStorage.setItem("un", response.profileObj.name);
                 sessionStorage.setItem("em", response.profileObj.email);
                 sessionStorage.setItem("img", response.profileObj.imageUrl);
+                sessionStorage.setItem("gid", response.profileObj.googleId);
                 window.location.reload(); // This reload is here so that once logged in, the user doesn't have to manually refresh to see their data appear in the app.
             });  
         }

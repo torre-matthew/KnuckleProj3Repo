@@ -24,42 +24,38 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
        status: !this.state.status
      })
 
-     console.log(this.state.status); // this is consoling true/false when heart is clicked
+    //  console.log(this.state.status); // this is consoling true/false when heart is clicked
      let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
-
      let targetName = target.getAttribute("data-name");
-
      let targetImage = document.getElementById("recipeImage");
-     
      let targetImageSrc = targetImage.getAttribute("src");
-
      let targetId = document.getElementById("recipeIdLink");
-
-     let targetIdFind = targetId.childNodes[1];
-
+     let targetIdFind = targetId.childNodes[1]
      let targetIdLink = targetIdFind.getAttribute("data-recipeid").split("_");
-
      let email = sessionStorage.getItem("em");
 
      console.log(targetIdLink[1]);
 
      if (this.state.status === false) {
-       console.log("saving");
-       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink)
+      //  console.log("saving");
+       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink[1])
          .then (response => {
-           PPAPI.associateSavedRecipeToUser (email, response.data.recipeID)
+           PPAPI.associateSavedRecipeToUser(email, response.data.recipeID)
            console.log(email)
          })
-       console.log(recipe);
-       console.log(target.getAttribute("data-name"));
-       console.log(targetImageSrc);
+      //  console.log(recipe);
+      //  console.log(target.getAttribute("data-name"));
+      //  console.log(targetImageSrc);
      } else 
       console.log("not saving");
       
    }
+
    render() {
      return (
-       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick}></SaveFavoriteChild>
+       <SaveFavoriteChild 
+       className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} 
+       toggleClassName={this.handleClick} />
      )
    }
  }

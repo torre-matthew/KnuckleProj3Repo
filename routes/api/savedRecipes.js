@@ -20,6 +20,6 @@ router.route("/delete-recipe")
 // Deletes a recipe from the savedRecipes array of a user,
 // given googleID and recipeID
 router.route("/delete-user-recipe")
-  .delete(recipesController.deleteUserRecipe);
+  .put(recipesController.deleteUserRecipe);
 
 module.exports = router;
