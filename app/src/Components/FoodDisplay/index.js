@@ -55,7 +55,7 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
        console.log(targetImageSrc);
      } else 
       console.log("not saving");
-
+      
    }
    render() {
      return (
