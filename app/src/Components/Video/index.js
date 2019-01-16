@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
 import _ from 'lodash';
-import SearchBar from './SearchBarForm';
+import SearchBarForm from './SearchBarForm';
 import VideoList from './VideoList';
 import VideoPlayer from './VideoDisplay'
 import "./style.css"
@@ -14,29 +14,38 @@ class Video extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      youtubeSearchName: props.youtubeSearchName
     };
 
-    this.searchYoutube(props.youtubeSearchName);
+    this.searchYoutube(" ");
   }
 
-  videoSearch = _.debounce((term) => { this.searchYoutube(term) }, 300);
+  videoSearch = _.debounce((term) => { 
+    this.searchYoutube(term) 
+  }, 300);
 
   searchYoutube(term) {
+    console.log("term---", term);
     YTSearch({ key: YT_API, term: term}, (videos) => {
       this.setState({
         videos: videos,
-        selectedVideo: videos[0]
+        selectedVideo: videos[0],
       });
     });
+  }
+
+  componentDidMount() {
+    console.log("this should be the name from the video component" + this.state.youtubeSearchName);
   }
 
   render() {
     return (
         <div className="container">
-          <SearchBar
-            onChange={(searchTerm) => {this.videoSearch(searchTerm)}} />
-          <VideoPlayer video={this.state.selectedVideo} />
+          <SearchBarForm
+            onChange={(searchTerm) => {this.videoSearch(searchTerm)}} 
+            youtubeSearchName={this.props.youtubeSearchName} />
+          <VideoPlayer video={this.state.selectedVideo}  />
           <VideoList
             onVideoSelect={(selectedVideo) => {this.setState({selectedVideo})}}
             videos={this.state.videos}

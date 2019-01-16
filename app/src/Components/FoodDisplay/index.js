@@ -6,6 +6,7 @@ import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
 import PPAPI from "../../utils/pocketPantryAPI";
 import recipe from "../Ingredients";
+import Modal from "../Modal";
 
 let iconArray = [result_icon1, result_icon2, result_icon3, result_icon4];
 let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
@@ -16,13 +17,15 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
      super(props)
      this.state = {
        status: false,
-       modal:"#modal1"
+       renderModal:true,
+       showModal:false
      }
      this.handleClick = this.handleClick.bind(this)
    }
    handleClick() {
      this.setState({
-       status: !this.state.status
+       status: !this.state.status,
+       showModal:!this.state.showModal
      })
      console.log(this.state.status); // this is consoling true/false when heart is clicked
      let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
@@ -58,10 +61,19 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
       console.log("not saving");
 
    }
-   render() {
+   handleClose(){
+    this.setState({
+      showModal:!this.state.showModal
+    })
+   }
+    render() {
      return (
        <div>
-       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick} href={this.state.modal}></SaveFavoriteChild>
+       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick}></SaveFavoriteChild>\
+       <Modal show={this.state.showModal} handleClose={this.handleClose.bind()}>
+          <h4>Success!</h4>
+          <p>Your favorites have been updated.</p>
+        </Modal>
       </div>
      )
    }

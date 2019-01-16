@@ -5,7 +5,6 @@ import API from "../../utils/API";
 import {FoodDisplay, FoodDisplayCard} from "../FoodDisplay";
 import Video from "../Video";
 import FoodDetails from "../FoodDetails"
-import Modal from "../Modal";
 // import FoodDisplayCard from "../FoodDisplay";
 
 class ListOfingredients extends Component {
@@ -112,9 +111,7 @@ class ListOfingredients extends Component {
       totalTime:[],
       healthLabel:[],
       dietLabel:[],
-      youtubeSearchName:[],
-      cautions:[],
-      href:[]
+      youtubeSearchName:''
     });
     API.searchByID(recipeID)
       .then(res => {
@@ -146,6 +143,7 @@ class ListOfingredients extends Component {
 
   render() {
     return (
+      
       <div>
         <div className="pp-foh-list row container">
           <div className="col s12 m6">
@@ -198,7 +196,8 @@ class ListOfingredients extends Component {
             })}
           </FoodDisplay>
         )}
-        {this.state.showRecipeIngredients ? (
+        {this.state.showRecipeIngredients && this.state.youtubeSearchName !== '' ? (
+          
           <FoodDetails
             healthLabels={this.state.healthLabel}
             listOfIngredients={this.state.recipeIngredients}
@@ -211,14 +210,10 @@ class ListOfingredients extends Component {
           />
         ) : 
         ""}
-        
-      <Modal show={this.state.status} handleClose={this.handleClose.bind()}>
-        <h4>Success!</h4>
-        <p>Your favorites have been updated.</p>
-      </Modal>
-    </div>
+      </div>
     )
   }
 }
+
 
 export default ListOfingredients;
