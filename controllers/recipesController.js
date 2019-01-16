@@ -31,19 +31,14 @@ let deleteRecipeByID = (req, res) => {
 //(not recipeID) and deletes the corresponding array element in the savedRecipes
 //array of the user, which is found by googleID. (THANKS TORRE)
 let deleteRecipeFromUserArray = (req, res) => {
-    db.SavedRecipes.find({"recipeID": req.body.recipeID})
-    .then(data => {
-        db.Users.findOneAndUpdate({"email": req.body.email}, {$pull: {savedRecipes: data[0]._id}})
+    
+        db.Users.findOneAndUpdate({"email": req.body.email}, {$pull: {savedRecipes: req.body.id}})
         .then(updatedUserRecord => {
             res.json(updatedUserRecord);
         })
         .catch(err => {
             console.error(err);   
-        }); 
-    })
-    .catch(err => {
-        console.error(err);
-    });  
+        });   
 }
 
 // Defining methods for the recipesController

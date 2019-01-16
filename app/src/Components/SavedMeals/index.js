@@ -3,12 +3,14 @@ import API from "../../utils/API";
 import FoodDetails from "../FoodDetails";
 import Video from "../Video";
 import "./style.css";
+import PPAPI from "../../utils/pocketPantryAPI";
+import SideNav from "react-materialize/lib/SideNav";
 
 class SaveFavorite extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      status: false
+      status: false,
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -16,7 +18,23 @@ class SaveFavorite extends Component {
     this.setState({
       status: !this.state.status
     })
+
+    console.log(this.state.status); // this is consoling true/false when heart is clicked
+    let targetId = document.getElementById("recipeIdElem");
+    let id = targetId.getAttribute("data-recipeid-delete")
+    let email = sessionStorage.getItem("em");
+
+    if (this.state.status === false) {
+      PPAPI.deleteRecipeFromUserRecord(email, id)
+        .then (response => {
+        })
+        .catch(err => {
+          console.error(err);   
+      });
+    } else 
+     console.log("not deleting");  
   }
+
   render() {
     return (
       <SaveFavoriteChild 
@@ -25,6 +43,8 @@ class SaveFavorite extends Component {
       />
     )
   }
+
+
 }
 
 class SaveFavoriteChild extends React.Component {
@@ -134,7 +154,7 @@ showRecipe = (recipeID) => {
               <div className="pp-sm-fav-btn">
                 <SaveFavorite />
               </div>
-              <a href="#saved-recipe-area"><img src={recipes.image} data-recipeID={recipes.recipeID} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
+              <a href="#saved-recipe-area"><img id="recipeIdElem" src={recipes.image} data-recipeid-delete={recipes._id} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
               <div className="pp-sm-recipe-fav-link">
               <a href="#saved-recipe-area" onClick={() => this.showRecipe(recipes.recipeID)}>{recipes.name}</a>
               </div>
