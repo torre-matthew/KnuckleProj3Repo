@@ -185,6 +185,7 @@ class ListOfingredients extends Component {
                   href={recipe.recipe.href}
                   image={recipe.recipe.image}
                   renderComponent={this.state.showComponent}
+                  // recipeID={recipeID}
                   recipeID={recipe.recipe.uri}
                   showRecipe={this.showRecipe.bind(this)}
                 />

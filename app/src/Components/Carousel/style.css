@@ -3,7 +3,7 @@
 }
 
 .carousel.carousel-slider {
-  max-height: 640px;
+  max-height: 500px;
 }
 
 .carousel .slide:first-of-type::before {
@@ -14,8 +14,8 @@
   box-shadow: 7px 7px 0 #ffd9cc;
   position: absolute;
   padding: 0 20px;
-  bottom: 70px;
-  right: 70px;
+  bottom: 390px;
+  right: 200px;
 }
 
 .carousel .slide:nth-child(2)::before {
@@ -26,8 +26,8 @@
   box-shadow: 7px 7px 0 #ffd9cc;
   position: absolute;
   padding: 0 20px;
-  top: 30px;
-  right: 70px;
+  top: 90px;
+  right: 200px;
 }
 
 .carousel .slide:last-of-type::before {
@@ -38,26 +38,55 @@
   box-shadow: 7px 7px 0 #ffd9cc;
   position: absolute;
   padding: 0 20px;
-  top: 120px;
-  left: 70px;
+  top: 200px;
+  left: 200px;
 }
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 1100px) {
+
+  .carousel .slide:first-of-type::before {
+    bottom: 100px;
+    right: 100px;
+  }
+  .carousel .slide:nth-child(2)::before {
+    top: 70px;
+    right: 100px;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  
+  .carousel .slide:nth-child(2)::before {
+    top: 170px;
+    right: 100px;
+  }
+
+  .carousel .slide:last-of-type::before {
+    top: 250px;
+    left: 120px;
+  }
+}
+
+
+@media only screen and (max-width: 777px) {
+
   .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
     font-size: 1.7rem;
   }
 
   .carousel .slide:first-of-type::before {
-    bottom: 100px;
-    right: 120px;
+    bottom: 70px;
+    right: 100px;
   }
 
   .carousel .slide:nth-child(2)::before {
     top: 100px;
-    right: 60px;
+    right: 70px;
   }
 
   .carousel .slide:last-of-type::before {
     left: 45px;
+    top: 150px;
   }
 
   .g-buttons button:last-of-type {
@@ -65,7 +94,15 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 670px) {
+
+  .carousel .slide:nth-child(2)::before {
+    top: 150px;
+    right: 70px;
+  }
+}
+
+@media only screen and (max-width: 514px) {
   .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
     font-size: 1.57rem;
   }
@@ -76,7 +113,7 @@
   }
 
   .carousel .slide:nth-child(2)::before {
-    top: 100px;
+    top: 150px;
     right: 60px;
   }
 
@@ -89,23 +126,24 @@
   }
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 455px) {
   .carousel .slide:first-of-type::before, .carousel .slide:nth-child(2)::before, .carousel .slide:last-of-type::before  {
     font-size: 1.2rem;
   }
 
   .carousel .slide:first-of-type::before {
-    bottom: 100px;
     right: 120px;
+    bottom: 50px;
   }
 
   .carousel .slide:nth-child(2)::before {
-    top: 100px;
+    top: 120px;
     right: 60px;
   }
 
   .carousel .slide:last-of-type::before {
     left: 45px;
+    top: 130px;
   }
 
   .g-buttons button:last-of-type {
@@ -143,18 +181,18 @@
   }
 
   .carousel .slide:first-of-type::before {
-    bottom: 59px;
+    bottom: 40px;
     right: 120px;
   }
 
   .carousel .slide:nth-child(2)::before {
-    top: 90px;
+    top: 105px;
     right: 100px;
   }
 
   .carousel .slide:last-of-type::before {
     left: 10px;
-    top: 90px;
+    top: 105px;
   }
 
   .g-buttons button:last-of-type {
