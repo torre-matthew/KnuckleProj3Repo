@@ -25,7 +25,7 @@ function Header() {
               trigger={<Button className="fas"><img src={yourImage} alt="" /></Button>}>
               <Welcome />
             </Modal></li>
-            <li className="pp-sidenav left"><Sidenav /></li>
+            <li id="leftButton" className="pp-sidenav left"><Sidenav /></li>
         </ul>
           
       </div> 

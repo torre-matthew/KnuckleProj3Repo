@@ -41,7 +41,10 @@
 .pp-food-details .pp-recipe-rm {
   float: right;
   margin-top: 10px;
-  background-color: #000000;
+  background-color: #333333;
+  padding: 30px 40px;
+  line-height: 3px;
+  font-weight: 500;
   -webkit-box-shadow: 8px 8px 0px rgba(177, 177, 177, 0.2);
   -moz-box-shadow: 8px 8px 0px rgba(177, 177, 177, 0.2);
   box-shadow: 8px 8px 0px rgba(177, 177, 177, 0.2);
@@ -49,4 +52,9 @@
 
 .pp-food-details .pp-recipe-rm:hover {
   background-color: #ff4301;
+  color: #ffffff;
+}
+
+.pp-food-details .pp-recipe-rm:focus {
+  color: #ffffff;
 }

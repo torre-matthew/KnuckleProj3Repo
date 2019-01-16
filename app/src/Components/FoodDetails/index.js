@@ -71,7 +71,7 @@ function FoodDetails(props) {
               </tr>
             </tbody>
           </table>
-            <a href={props.href} className="btn waves-effect waves-light pp-recipe-rm" target="_blank">Read more</a>
+            <a href={props.href} className="btn waves-effect waves-light pp-recipe-rm" target="_blank">View Recipe</a>
         </div>
       </div>
     </div>

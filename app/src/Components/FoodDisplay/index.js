@@ -94,7 +94,7 @@ export function FoodDisplayCard(props){
             <img src={randomIcon} alt="food icon" />
           </div>
           <div id="recipeIdLink" className="pp-fd-link">
-            <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
+            <span className="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
             
             <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>{props.name}</a>
             {/* props.buttonClick */}
