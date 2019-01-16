@@ -6,7 +6,6 @@ import result_icon3 from "./result_icon3.png";
 import result_icon4 from "./result_icon4.png";
 import PPAPI from "../../utils/pocketPantryAPI";
 import recipe from "../Ingredients";
-import Modal from "../Modal";
 
 let iconArray = [result_icon1, result_icon2, result_icon3, result_icon4];
 let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
@@ -16,65 +15,46 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
    constructor(props) {
      super(props)
      this.state = {
-       status: false,
-       renderModal:true,
-       showModal:false
+       status: false
      }
      this.handleClick = this.handleClick.bind(this)
    }
    handleClick() {
      this.setState({
-       status: !this.state.status,
-       showModal:!this.state.showModal
+       status: !this.state.status
      })
-     console.log(this.state.status); // this is consoling true/false when heart is clicked
+
+    //  console.log(this.state.status); // this is consoling true/false when heart is clicked
      let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
-
      let targetName = target.getAttribute("data-name");
-
      let targetImage = document.getElementById("recipeImage");
-     
      let targetImageSrc = targetImage.getAttribute("src");
-
      let targetId = document.getElementById("recipeIdLink");
-
-     let targetIdFind = targetId.childNodes[1];
-
+     let targetIdFind = targetId.childNodes[1]
      let targetIdLink = targetIdFind.getAttribute("data-recipeid").split("_");
-
      let email = sessionStorage.getItem("em");
 
      console.log(targetIdLink[1]);
 
      if (this.state.status === false) {
-       console.log("saving");
-       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink)
+      //  console.log("saving");
+       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink[1])
          .then (response => {
-           PPAPI.associateSavedRecipeToUser (email, response.data.recipeID)
+           PPAPI.associateSavedRecipeToUser(email, response.data.recipeID)
            console.log(email)
- 
          })
-       console.log(recipe);
-       console.log(target.getAttribute("data-name"));
-       console.log(targetImageSrc);
+      //  console.log(recipe);
+      //  console.log(target.getAttribute("data-name"));
+      //  console.log(targetImageSrc);
      } else 
       console.log("not saving");
+   }
 
-   }
-   handleClose(){
-    this.setState({
-      showModal:!this.state.showModal
-    })
-   }
-    render() {
+   render() {
      return (
-       <div>
-       <SaveFavoriteChild className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} toggleClassName={this.handleClick}></SaveFavoriteChild>\
-       <Modal show={this.state.showModal} handleClose={this.handleClose.bind()}>
-          <h4>Success!</h4>
-          <p>Your favorites have been updated.</p>
-        </Modal>
-      </div>
+       <SaveFavoriteChild 
+       className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} 
+       toggleClassName={this.handleClick} />
      )
    }
  }
@@ -115,7 +95,7 @@ export function FoodDisplayCard(props){
           <div id="recipeIdLink" className="pp-fd-link">
             <span class="hidden-link"><a id="recipeLink"  href={props.link}></a></span>
             
-            <a data-scroll href="#getStarted" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>See Recipe</a>
+            <a data-scroll href="#recipe-area" data-recipeID={props.recipeID} onClick={() => props.showRecipe(props.recipeID)}>{props.name}</a>
             {/* props.buttonClick */}
           </div>
         </div>
@@ -125,7 +105,7 @@ export function FoodDisplayCard(props){
 }
 
 //This is a functional component that acts as the container for the cards.
-export function FoodDisplay({props, children}) {
+export function FoodDisplay({children}) {
   return (
     <div className="pp-fd">
       <div className="container">
