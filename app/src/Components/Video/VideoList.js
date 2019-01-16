@@ -16,9 +16,11 @@ const VideoList = ({videos, onVideoSelect}) => {
   });
 
   return (
-    <ul className="col-md-4 list-group">
+    <div className="pp-foh-list row container">
+    <ul className="col s12 m4 l8 list-group">
       { videoItems }
     </ul>
+    </div>
   );
 }
 
