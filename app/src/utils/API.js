@@ -1,7 +1,7 @@
 import axios from "axios";
 const BASEURL = "https://api.edamam.com/search?q=";
-const APIKEY = "&app_key=f8fad82d02637a25041c566779911770";
-const appID = "&app_id=c83ee7c9";
+const APIKEY = "&app_key=d6e0b07cfd2a3b315df8277fcca614c1	";
+const appID = "&app_id=0f331502";
 const BASEURI = "https://api.edamam.com/search?r="
 const URI = "http%3A%2F%2Fwww.edamam.com%2Fontologies%2Fedamam.owl%23recipe_"
 export default {
