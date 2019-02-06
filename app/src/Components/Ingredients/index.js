@@ -175,9 +175,6 @@ class ListOfingredients extends Component {
         ) : (
           <FoodDisplay>
             {this.state.recipes.map(recipe => {
-              // let recipeIDUri = recipe.recipe.uri
-              // let arr = recipeIDUri.split("_");
-              // let recipeID = arr[1];
               return (
                 <FoodDisplayCard
                   key={recipe.recipe.label}

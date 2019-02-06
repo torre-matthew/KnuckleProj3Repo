@@ -19,30 +19,36 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
      }
      this.handleClick = this.handleClick.bind(this)
    }
+
+   
+
    handleClick() {
      this.setState({
        status: !this.state.status
      })
 
-    //  console.log(this.state.status); // this is consoling true/false when heart is clicked
-     let target = document.getElementById("favorite").parentNode.parentNode.parentNode;
-     let targetName = target.getAttribute("data-name");
-     let targetImage = document.getElementById("recipeImage");
-     let targetImageSrc = targetImage.getAttribute("src");
-     let targetId = document.getElementById("recipeIdLink");
-     let targetIdFind = targetId.childNodes[1]
-     let targetIdLink = targetIdFind.getAttribute("data-recipeid").split("_");
-     let email = sessionStorage.getItem("em");
-
-     console.log(targetIdLink[1]);
+    //  console.log(this.state.status); // this is consoling true/false when heart is clicked    
+      let properIdArr = this.props.recipeID.split("_");
+      let properId = properIdArr[1];
+      let targetName = this.props.name;
+      let targetImageSrc = this.props.image;
+      let email = sessionStorage.getItem("em");
 
      if (this.state.status === false) {
       //  console.log("saving");
-       PPAPI.saveRecipeToDB(targetName, targetImageSrc, targetIdLink[1])
+       PPAPI.saveRecipeToDB(targetName, targetImageSrc, properId)
          .then (response => {
            PPAPI.associateSavedRecipeToUser(email, response.data.recipeID)
-           console.log(email)
+           .then (response => {
+              this.getSavedRecipesFromDB();
+           })
+           .catch(err => {
+             console.error(err);
+           })
          })
+         .catch(err => {
+          console.error(err);
+        })
       //  console.log(recipe);
       //  console.log(target.getAttribute("data-name"));
       //  console.log(targetImageSrc);
@@ -51,11 +57,31 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
       
    }
 
+
+
+  getSavedRecipesFromDB = () => {
+    let googleId = sessionStorage.getItem("gid");
+    PPAPI.getUsersSavedRecipes(googleId).then(userRecipes => {
+        if (userRecipes.data.length > 0) {
+          this.addSavedRecipesToSessionStorage(userRecipes.data);
+        }
+    });        
+  }
+
+  
+  addSavedRecipesToSessionStorage = (arr) => {
+    sessionStorage.setItem("savedRecipes", JSON.stringify(arr));
+  }
+    
    render() {
      return (
        <SaveFavoriteChild 
        className={this.state.status ? "fas fa-heart pp-sm-heart" : "far fa-heart pp-sm-heart"} 
-       toggleClassName={this.handleClick} />
+        toggleClassName={this.handleClick} 
+        name={this.props.name} 
+        image={this.props.image}
+        recipeID={this.props.recipeID}
+       />
      )
    }
  }
@@ -65,8 +91,7 @@ let randomIcon = iconArray[Math.floor(Math.random()*iconArray.length)];
      return (
        <span id="favorite" className="pp-sm-favme">
        <i className={ this.props.className }
-           onClick={this.props.toggleClassName}
-       >
+          onClick={this.props.toggleClassName}>
        { this.props.children }
          </i></span>
      )
@@ -85,7 +110,13 @@ export function FoodDisplayCard(props){
       <div id="theRecipe" data-name={props.name} className="col s12 m6">
         <div className="pp-fd-results">
           <div className="pp-sm-fav-btn">
-            <SaveFavorite />
+            <SaveFavorite 
+              key={props.key}
+              name={props.name}
+              href={props.href}
+              image={props.image}
+              recipeID={props.recipeID}
+            />
           </div>
           <div>
             <img id="recipeImage" src={props.image} alt="food"/>

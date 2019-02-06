@@ -19,20 +19,36 @@ class SaveFavorite extends Component {
       status: !this.state.status
     })
 
-    console.log(this.state.status); // this is consoling true/false when heart is clicked
-    let targetId = document.getElementById("recipeIdElem");
-    let id = targetId.getAttribute("data-recipeid-delete")
+    let properId = this.props.recipeID;
     let email = sessionStorage.getItem("em");
 
     if (this.state.status === false) {
-      PPAPI.deleteRecipeFromUserRecord(email, id)
+      PPAPI.deleteRecipeFromUserRecord(email, properId)
         .then (response => {
+          this.getSavedRecipesFromDB();
         })
         .catch(err => {
           console.error(err);   
       });
     } else 
      console.log("not deleting");  
+  }
+
+  getSavedRecipesFromDB = () => {
+    let googleId = sessionStorage.getItem("gid");
+    PPAPI.getUsersSavedRecipes(googleId).then(userRecipes => {
+        if (userRecipes.data.length > 0) {
+          this.addSavedRecipesToSessionStorage(userRecipes.data);
+        }
+        else {
+          this.addSavedRecipesToSessionStorage([]);
+        }
+    });        
+  }
+
+  addSavedRecipesToSessionStorage = (arr) => {
+    sessionStorage.setItem("savedRecipes", JSON.stringify(arr));
+    window.location.reload();
   }
 
   render() {
@@ -97,6 +113,12 @@ getSavedRecipesFromSessionStorage = () => {
       sectionMessage: yourName + " 's Saved Recipes"
     });
   }
+  else {
+    this.setState({
+      yourName: "",
+      sectionMessage: "You have no saved recipes",
+    });
+  }
 }
 
 //This function searches the Edamam API for the SPECIFIC recipe clicked by the user,
@@ -152,7 +174,9 @@ showRecipe = (recipeID) => {
           <div className="col s12 m3 pp-sm-recipe">
             <div className="pp-sm-recipe-fav">
               <div className="pp-sm-fav-btn">
-                <SaveFavorite />
+                <SaveFavorite 
+                  recipeID={recipes._id}
+                />
               </div>
               <a href="#saved-recipe-area"><img id="recipeIdElem" src={recipes.image} data-recipeid-delete={recipes._id} alt={recipes.name} onClick={() => this.showRecipe(recipes.recipeID)}/></a>
               <div className="pp-sm-recipe-fav-link">
