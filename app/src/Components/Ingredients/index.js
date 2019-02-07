@@ -127,6 +127,7 @@ class ListOfingredients extends Component {
             cautions:["None"]
           })
         }
+        window.location.href = "#getStarted";
       })
       .catch(err => console.log(err))
   }
