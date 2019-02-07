@@ -151,9 +151,7 @@ showRecipe = (recipeID) => {
           cautions:["None"]
         })
       }
-      console.log(res);
-      console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
-      console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
+      window.location.href = "#getStarted";
     })
     .catch(err => console.log(err))
 }
