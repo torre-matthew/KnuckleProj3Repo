@@ -18,11 +18,13 @@ window.onload = function() {
     var logo = document.getElementById("logo");
     var elem = document.querySelector('.App-logo');
     var sideMenuButton = document.getElementById("leftButton");
+    var brandLogo = document.getElementById("brandLogo");
 
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
      
       logo.style.maxWidth = "90px";
       logo.style.filter = "drop-shadow(0px 0px 10px #ff4301)";
+      //brandLogo.style.transform = "scale(1,1)";
       sideMenuButton.style.marginLeft = "80px";
       if (x === 1) {
       elem.animate([
