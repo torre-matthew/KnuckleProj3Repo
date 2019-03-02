@@ -52,6 +52,17 @@ class ListOfingredients extends Component {
       ingredients
     })
   }
+  
+  // enable the enter key for adding ingredients
+  enterButtonPressed = (event) => {
+    const code = event.keyCode || event.which;
+    if(code === 13) {
+      let ingredients = this.state.ingredients.concat(['']);
+      this.setState({
+        ingredients
+      })
+    }
+  }
 
   //This is an onClick function for the search button that queries the Edamam API with the ingredients
   //that the user types in. The recipes will be saved in the state array "recipes", and this state is
@@ -145,6 +156,8 @@ class ListOfingredients extends Component {
                 type="text"
                 className="pp-foh-text"
                 onChange={this.handleText(index)}
+                autoFocus="true"
+                onKeyUp={this.enterButtonPressed.bind(this)}
                 value={ingredient}
               />
               <button id="del" className="pp-foh-remove pp-red" onClick={this.handleDelete(index)}><i className="tiny material-icons">close</i></button>
