@@ -91,6 +91,10 @@
     font-size: 2rem;
 }
 
+.pp-fd-link a:hover {
+  cursor: pointer;
+}
+
 .pp-fd-link .hidden-link {
   display: none;
 }

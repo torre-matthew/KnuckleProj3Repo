@@ -93,10 +93,8 @@ class ListOfingredients extends Component {
 //State recipeIngredients contains all the ingredients for the recipe
 //State youtubeSearchName contains the name for the recipe.
   showRecipe = (recipeID) => {
-    console.log(recipeID);
     let array = recipeID.split("_");
     recipeID = array[1];
-    console.log(recipeID);
     this.setState({
       showRecipeIngredients:true,
       recipeIngredients:[],
@@ -118,6 +116,7 @@ class ListOfingredients extends Component {
           cautions:res.data[0].cautions,
           href:res.data[0].url
         })
+
         if(res.data[0].totalTime === 0){
           this.setState({
             totalTime:["Unknown"]
@@ -128,8 +127,7 @@ class ListOfingredients extends Component {
             cautions:["None"]
           })
         }
-        console.log("this is the State recipeIngredients: " + this.state.recipeIngredients);
-        console.log("this is the State youtubeSearchName: " + this.state.youtubeSearchName);
+        window.location.href = "#getStarted";
       })
       .catch(err => console.log(err))
   }
@@ -175,9 +173,6 @@ class ListOfingredients extends Component {
         ) : (
           <FoodDisplay>
             {this.state.recipes.map(recipe => {
-              // let recipeIDUri = recipe.recipe.uri
-              // let arr = recipeIDUri.split("_");
-              // let recipeID = arr[1];
               return (
                 <FoodDisplayCard
                   key={recipe.recipe.label}

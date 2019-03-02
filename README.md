@@ -1,11 +1,8 @@
 ## Pocket Pantry
- A memory game built with React.js in the theme of the animated television series, Ben 10.
+Go from nearly empty pantry to spectacular meal with Pocket Pantry. This app will take the ingredients you have on hand and give you great dish ideas that could be made with those ingredients.
 
-## Link to the deployed app
-https://murmuring-badlands-78285.herokuapp.com
+## [Check it out here](https://murmuring-badlands-78285.herokuapp.com)
 
-## What is this repo or project?
-This application allows the user to view a wide range of recipes based on the ingredients they enter.
 
 ## How does it work?
 A user can login using their Google ID or they can enjoy the app as a guest. The difference is that users who login can save their recipes.
@@ -30,4 +27,15 @@ A user can login using their Google ID or they can enjoy the app as a guest. The
 **Anyone** who looks in their cupboards or pantry and thinks they don't have anything to eat can use their on-hand ingredients to generate a list of wonderful meal options.
 
 ## What is the goal of this project?
+<<<<<<< HEAD
 The gloal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
+=======
+The gloal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
+
+### Technologies Used
+[]() | []() | []()
+------------------ | -------------------- | --------------------
+[MongoDB]() | [Node.js]() | [Express]()| 
+[React]() | [Mongoose]()  | [Heroku]()
+[Materialize]() | [React - Materialize]() | [React - Google Auth]()
+>>>>>>> de19569d7ae9edd0f533ecc74d8041ed039d27b5
