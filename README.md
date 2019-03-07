@@ -28,9 +28,9 @@ A user can login using their Google ID or they can enjoy the app as a guest. The
 
 ## What is the goal of this project?
 <<<<<<< HEAD
-The gloal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
+The goal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
 =======
-The gloal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
+The goal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
 
 ### Technologies Used
 []() | []() | []()
