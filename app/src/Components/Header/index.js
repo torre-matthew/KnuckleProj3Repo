@@ -15,7 +15,7 @@ function Header() {
    <div className="navbar-fixed">
     <nav className="navbar navbar-expand-sm">
       <div className="nav-wrapper container">
-          <a href="#!" className="brand-logo"><img id="logo" src={logo} className="App-logo" alt="logo" /> </a>
+          <a href="#!" id="brandLogo" className="brand-logo"><img id="logo" src={logo} className="App-logo" alt="logo" /> </a>
         <ul>
             <li className="google-modal right">
             <Modal

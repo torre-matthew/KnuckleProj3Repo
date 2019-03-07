@@ -27,7 +27,10 @@ A user can login using their Google ID or they can enjoy the app as a guest. The
 **Anyone** who looks in their cupboards or pantry and thinks they don't have anything to eat can use their on-hand ingredients to generate a list of wonderful meal options.
 
 ## What is the goal of this project?
-The gloal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
+<<<<<<< HEAD
+The goal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
+=======
+The goal of this project was to create a full MERN stack application which has utility as well as real value to people. The goal was to also work together as a team utilizing a project management system, and nightly stand-ups while meeting all of the requirements and expectations of the project.
 
 ### Technologies Used
 []() | []() | []()
@@ -35,3 +38,4 @@ The gloal of this project was to create a full MERN stack application which has 
 [MongoDB]() | [Node.js]() | [Express]()| 
 [React]() | [Mongoose]()  | [Heroku]()
 [Materialize]() | [React - Materialize]() | [React - Google Auth]()
+>>>>>>> de19569d7ae9edd0f533ecc74d8041ed039d27b5
